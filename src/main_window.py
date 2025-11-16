@@ -89,5 +89,6 @@ class MainWindow(QMainWindow):
 
     def _on_pattern_selected(self, pattern):
         """Handle pattern selection from library"""
-        # Will be implemented in Phase 4 for image display
         print(f"Pattern selected: {pattern.name} ({pattern.type})")
+        # Display the pattern in the player panel
+        self.player_panel.display_pattern(pattern)

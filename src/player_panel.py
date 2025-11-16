@@ -1,11 +1,12 @@
 """Player Panel Widget - Displays and plays test patterns"""
 
+from pathlib import Path
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel,
     QPushButton, QSlider, QFrame
 )
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QPixmap
 
 
 class PlayerPanel(QWidget):
@@ -13,6 +14,8 @@ class PlayerPanel(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.current_pattern = None
+        self.current_pixmap = None
         self._init_ui()
 
     def _init_ui(self):
@@ -30,7 +33,7 @@ class PlayerPanel(QWidget):
         display_layout = QVBoxLayout(self.display_frame)
         display_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Placeholder label for Phase 2
+        # Display label (shows images or placeholder text)
         self.display_label = QLabel("Select a pattern from the library")
         self.display_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.display_label.setStyleSheet("""
@@ -40,6 +43,7 @@ class PlayerPanel(QWidget):
                 padding: 20px;
             }
         """)
+        self.display_label.setScaledContents(False)  # We'll handle scaling manually
         display_layout.addWidget(self.display_label)
 
         layout.addWidget(self.display_frame)
@@ -154,3 +158,106 @@ class PlayerPanel(QWidget):
                 border-color: #0078d4;
             }
         """
+
+    def display_pattern(self, pattern):
+        """
+        Display a pattern (image or video)
+
+        Args:
+            pattern: Pattern object to display
+        """
+        if not pattern:
+            self._show_placeholder("No pattern selected")
+            return
+
+        self.current_pattern = pattern
+
+        # Check if file exists
+        if not pattern.file_exists():
+            self._show_placeholder(f"File not found:\n{pattern.path}")
+            print(f"Error: Pattern file not found: {pattern.path}")
+            return
+
+        # Handle based on pattern type
+        if pattern.is_image():
+            self._display_image(pattern.path)
+        elif pattern.is_video():
+            # Video playback will be implemented in Phase 6
+            self._show_placeholder(f"Video playback coming in Phase 6\n{pattern.name}")
+            print(f"Video pattern selected: {pattern.name} (playback in Phase 6)")
+        else:
+            self._show_placeholder(f"Unknown pattern type:\n{pattern.type}")
+
+    def _display_image(self, image_path):
+        """
+        Display an image file
+
+        Args:
+            image_path: Path to the image file
+        """
+        try:
+            # Load the image
+            pixmap = QPixmap(str(image_path))
+
+            if pixmap.isNull():
+                self._show_placeholder(f"Failed to load image:\n{image_path}")
+                print(f"Error: Failed to load image: {image_path}")
+                return
+
+            # Store the original pixmap
+            self.current_pixmap = pixmap
+
+            # Scale and display
+            self._update_scaled_image()
+
+            print(f"Displaying image: {image_path} ({pixmap.width()}x{pixmap.height()})")
+
+        except Exception as e:
+            self._show_placeholder(f"Error loading image:\n{str(e)}")
+            print(f"Error displaying image: {e}")
+
+    def _update_scaled_image(self):
+        """Update the displayed image with proper scaling"""
+        if not self.current_pixmap:
+            return
+
+        # Get available size (subtract some margin)
+        available_size = self.display_frame.size()
+        available_size.setWidth(available_size.width() - 20)
+        available_size.setHeight(available_size.height() - 20)
+
+        # Scale pixmap to fit while maintaining aspect ratio
+        scaled_pixmap = self.current_pixmap.scaled(
+            available_size,
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation
+        )
+
+        # Display the scaled image
+        self.display_label.setPixmap(scaled_pixmap)
+        self.display_label.setText("")  # Clear any placeholder text
+
+    def _show_placeholder(self, message):
+        """
+        Show a placeholder message
+
+        Args:
+            message: Message to display
+        """
+        self.current_pixmap = None
+        self.display_label.setPixmap(QPixmap())  # Clear any image
+        self.display_label.setText(message)
+
+    def resizeEvent(self, event):
+        """Handle resize events to rescale the image"""
+        super().resizeEvent(event)
+
+        # Rescale the current image if one is displayed
+        if self.current_pixmap:
+            self._update_scaled_image()
+
+    def clear_display(self):
+        """Clear the display and show placeholder"""
+        self.current_pattern = None
+        self.current_pixmap = None
+        self._show_placeholder("Select a pattern from the library")
