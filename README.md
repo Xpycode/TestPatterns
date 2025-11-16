@@ -1,2 +1,206 @@
-# TestPatterns
-Display of test patterns in video and image form
+# Test Pattern Player
+
+A professional cross-platform desktop application for displaying video test patterns (both still images and videos) for broadcast and video production use.
+
+## Features
+
+- **Professional Test Patterns**: Includes SMPTE color bars, EBU color bars, grayscale ramps, grid patterns, and more
+- **Custom Pattern Support**: Add your own images and videos
+- **Video Playback**: Full-featured video player with play/pause, seek, loop, and volume controls
+- **Fullscreen Display**: Present patterns on any connected monitor
+- **Library Management**: Organize, search, rename, and reorder your pattern collection
+- **Cross-Platform**: Runs on macOS and Windows
+- **Portable**: Windows version requires no installation or admin rights
+
+## Requirements
+
+- **Python**: 3.8 or higher
+- **Operating Systems**: macOS 10.14+, Windows 11
+- **Dependencies**: See `requirements.txt`
+
+## Installation
+
+### macOS Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd TestPatterns
+   ```
+
+2. **Create a virtual environment:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Windows Setup
+
+1. **Clone the repository:**
+   ```cmd
+   git clone <repository-url>
+   cd TestPatterns
+   ```
+
+2. **Create a virtual environment:**
+   ```cmd
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+3. **Install dependencies:**
+   ```cmd
+   pip install -r requirements.txt
+   ```
+
+## Running the Application
+
+### Development Mode
+
+**macOS/Linux:**
+```bash
+source venv/bin/activate
+python main.py
+```
+
+**Windows:**
+```cmd
+venv\Scripts\activate
+python main.py
+```
+
+## Building Executables
+
+### macOS Build
+
+```bash
+cd build
+chmod +x build_macos.sh
+./build_macos.sh
+```
+
+The macOS app bundle will be created in `dist/TestPatternPlayer.app`
+
+### Windows Build
+
+```cmd
+cd build
+build_windows.bat
+```
+
+The portable Windows app will be created in `dist\TestPatternPlayer\`
+
+## Usage
+
+### Adding Custom Patterns
+
+1. Click "Add Pattern" button in the Library Panel
+2. Select one or more image or video files
+3. Supported formats:
+   - **Images**: PNG, JPEG, JPG, TIFF, BMP
+   - **Videos**: MP4, MOV, MKV, AVI, WEBM
+
+### Playing Patterns
+
+- **Single click** a pattern in the library to display it
+- **Double click** to display in fullscreen
+- Use playback controls for videos (play/pause, seek, loop, volume)
+
+### Keyboard Shortcuts
+
+- `Space` - Play/Pause (videos)
+- `F` or `F11` - Toggle fullscreen
+- `L` - Toggle loop
+- `ESC` - Exit fullscreen
+- `Up/Down` - Navigate library
+- `Delete` - Remove selected pattern
+- `Ctrl/Cmd + O` - Add pattern
+- `Ctrl/Cmd + Q` - Quit application
+
+### Managing Your Library
+
+- **Rename**: Right-click pattern → Rename
+- **Delete**: Right-click pattern → Delete (or press Delete key)
+- **Reorder**: Drag and drop patterns to custom positions
+- **Search**: Use the search bar to filter patterns by name
+- **Sort**: Library menu → Sort by Name/Type/Custom
+
+## Project Structure
+
+```
+test-pattern-app/
+├── main.py                     # Application entry point
+├── requirements.txt            # Python dependencies
+├── README.md                   # This file
+├── .gitignore                 # Git ignore rules
+├── src/                       # Source code
+│   ├── main_window.py         # Main application window
+│   ├── library_panel.py       # Library list widget
+│   ├── player_panel.py        # Video/image player widget
+│   ├── pattern_manager.py     # Pattern catalog manager
+│   ├── models.py              # Data models
+│   └── utils.py               # Helper functions
+├── resources/                 # Application resources
+│   ├── patterns/              # Preloaded test patterns
+│   ├── icons/                 # UI icons
+│   └── styles/                # Qt stylesheets
+├── data/                      # Application data (created at runtime)
+│   └── library.json           # Pattern library database
+└── build/                     # Build scripts and specs
+    ├── build_macos.sh         # macOS build script
+    └── build_windows.bat      # Windows build script
+```
+
+## Development
+
+### Current Status
+
+**Phase 1: Project Foundation** ✓ Complete
+- Basic project structure established
+- Application launches with empty window
+- Menu bar structure in place
+
+### Upcoming Phases
+
+- **Phase 2**: UI Layout with splitter panels
+- **Phase 3**: Pattern management and library
+- **Phase 4**: Image display functionality
+- **Phase 5**: User pattern import
+- **Phase 6**: Video playback
+- **Phase 7**: Playback controls
+- **Phase 8**: Fullscreen mode
+- **Phase 9**: Library enhancements
+- **Phase 10**: Polish and build scripts
+
+## Troubleshooting
+
+### Application won't start
+- Ensure Python 3.8+ is installed: `python --version`
+- Verify all dependencies are installed: `pip install -r requirements.txt`
+- Check that you're using the virtual environment
+
+### Video won't play
+- Ensure the video codec is supported by Qt Multimedia
+- Try converting the video to MP4 with H.264 codec
+- Check that audio output device is available
+
+### Patterns not persisting
+- Ensure the `data/` directory exists and is writable
+- Check file permissions on `data/library.json`
+
+## License
+
+MIT License - See LICENSE file for details
+
+## Contributing
+
+This is a structured development project following a phased approach. Please refer to the project documentation for the development roadmap.
+
+## Support
+
+For issues and feature requests, please use the GitHub issue tracker.

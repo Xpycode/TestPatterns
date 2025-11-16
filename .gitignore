@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+*.egg
+
+# PyInstaller build artifacts (but keep build scripts)
+build/*.spec
+build/build/
+build/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Application data
+data/library.json
+
+# OS
+.DS_Store
+Thumbs.db
