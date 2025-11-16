@@ -165,9 +165,15 @@ test-pattern-app/
 - Application launches with empty window
 - Menu bar structure in place
 
+**Phase 2: UI Layout** ✓ Complete
+- Two-panel layout with QSplitter (30% / 70% split)
+- Library panel with search bar, pattern list, and "Add Pattern" button
+- Player panel with display area and control buttons
+- Professional dark theme styling
+- Resizable splitter between panels
+
 ### Upcoming Phases
 
-- **Phase 2**: UI Layout with splitter panels
 - **Phase 3**: Pattern management and library
 - **Phase 4**: Image display functionality
 - **Phase 5**: User pattern import

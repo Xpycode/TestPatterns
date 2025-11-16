@@ -3,10 +3,13 @@ Main Window - Primary application window
 """
 
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QLabel
+    QMainWindow, QWidget, QSplitter
 )
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction
+
+from .library_panel import LibraryPanel
+from .player_panel import PlayerPanel
 
 
 class MainWindow(QMainWindow):
@@ -23,17 +26,31 @@ class MainWindow(QMainWindow):
 
     def _init_ui(self):
         """Initialize the user interface"""
-        # Create central widget with basic layout
+        # Create central widget with splitter layout
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
-        layout = QVBoxLayout(central_widget)
+        # Create horizontal splitter
+        self.splitter = QSplitter(Qt.Orientation.Horizontal)
 
-        # Placeholder label for Phase 1
-        label = QLabel("Test Pattern Player - Phase 1")
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        label.setStyleSheet("font-size: 24px; color: #666;")
-        layout.addWidget(label)
+        # Create library panel (left side - 30%)
+        self.library_panel = LibraryPanel()
+        self.splitter.addWidget(self.library_panel)
+
+        # Create player panel (right side - 70%)
+        self.player_panel = PlayerPanel()
+        self.splitter.addWidget(self.player_panel)
+
+        # Set initial splitter sizes (30% / 70%)
+        self.splitter.setSizes([300, 700])
+        self.splitter.setStretchFactor(0, 3)  # Library panel
+        self.splitter.setStretchFactor(1, 7)  # Player panel
+
+        # Set splitter as central widget's content
+        from PySide6.QtWidgets import QVBoxLayout
+        layout = QVBoxLayout(central_widget)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.addWidget(self.splitter)
 
     def _create_menu_bar(self):
         """Create the application menu bar"""
