@@ -10,6 +10,8 @@ from PySide6.QtGui import QAction
 
 from .library_panel import LibraryPanel
 from .player_panel import PlayerPanel
+from .pattern_manager import PatternManager
+from .utils import init_builtin_patterns
 
 
 class MainWindow(QMainWindow):
@@ -19,6 +21,12 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Test Pattern Player")
         self.setMinimumSize(1024, 768)
+
+        # Initialize pattern manager
+        self.pattern_manager = PatternManager()
+
+        # Generate built-in patterns if needed
+        init_builtin_patterns(self.pattern_manager)
 
         # Initialize UI
         self._init_ui()
@@ -34,12 +42,15 @@ class MainWindow(QMainWindow):
         self.splitter = QSplitter(Qt.Orientation.Horizontal)
 
         # Create library panel (left side - 30%)
-        self.library_panel = LibraryPanel()
+        self.library_panel = LibraryPanel(pattern_manager=self.pattern_manager)
         self.splitter.addWidget(self.library_panel)
 
         # Create player panel (right side - 70%)
         self.player_panel = PlayerPanel()
         self.splitter.addWidget(self.player_panel)
+
+        # Connect library selection to player panel (ready for Phase 4)
+        self.library_panel.pattern_selected.connect(self._on_pattern_selected)
 
         # Set initial splitter sizes (30% / 70%)
         self.splitter.setSizes([300, 700])
@@ -75,3 +86,8 @@ class MainWindow(QMainWindow):
 
         about_action = QAction("&About", self)
         help_menu.addAction(about_action)
+
+    def _on_pattern_selected(self, pattern):
+        """Handle pattern selection from library"""
+        # Will be implemented in Phase 4 for image display
+        print(f"Pattern selected: {pattern.name} ({pattern.type})")

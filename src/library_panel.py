@@ -11,11 +11,16 @@ class LibraryPanel(QWidget):
     """Library panel showing available test patterns"""
 
     # Signal emitted when a pattern is selected
-    pattern_selected = Signal(object)  # Will emit pattern object in Phase 3
+    pattern_selected = Signal(object)  # Emits Pattern object
 
-    def __init__(self, parent=None):
+    def __init__(self, pattern_manager=None, parent=None):
         super().__init__(parent)
+        self.pattern_manager = pattern_manager
         self._init_ui()
+
+        # Load patterns from manager if available
+        if self.pattern_manager:
+            self.load_patterns()
 
     def _init_ui(self):
         """Initialize the library panel UI"""
@@ -40,18 +45,6 @@ class LibraryPanel(QWidget):
         self.pattern_list.setSpacing(2)
         layout.addWidget(self.pattern_list)
 
-        # Add placeholder items for Phase 2 visualization
-        placeholder_items = [
-            "SMPTE Color Bars",
-            "EBU Color Bars",
-            "Grayscale Ramp",
-            "Grid Pattern",
-            "Black Frame",
-            "White Frame"
-        ]
-        for item_text in placeholder_items:
-            self.pattern_list.addItem(f"📊 {item_text}")
-
         # Add Pattern button
         self.add_button = QPushButton("+ Add Pattern")
         self.add_button.setMinimumHeight(35)
@@ -73,13 +66,55 @@ class LibraryPanel(QWidget):
         """)
         layout.addWidget(self.add_button)
 
-        # Connect signals (functionality will be implemented in later phases)
+        # Connect signals
         self.pattern_list.currentRowChanged.connect(self._on_selection_changed)
+        self.search_bar.textChanged.connect(self._on_search_changed)
         # Add button will be connected in Phase 5
+
+    def load_patterns(self):
+        """Load patterns from pattern manager into the list"""
+        if not self.pattern_manager:
+            return
+
+        self.pattern_list.clear()
+        patterns = self.pattern_manager.get_all_patterns()
+
+        for pattern in patterns:
+            self.pattern_list.addItem(pattern.get_display_name())
+
+        print(f"Loaded {len(patterns)} patterns into library panel")
 
     def _on_selection_changed(self, current_row):
         """Handle pattern selection change"""
-        # Placeholder for Phase 3 - will emit signal with pattern object
-        if current_row >= 0:
-            item = self.pattern_list.item(current_row)
-            print(f"Selected: {item.text()}")  # Debug output for Phase 2
+        if current_row >= 0 and self.pattern_manager:
+            pattern = self.pattern_manager.get_pattern_by_index(current_row)
+            if pattern:
+                print(f"Selected: {pattern.name}")
+                self.pattern_selected.emit(pattern)
+
+    def _on_search_changed(self, text):
+        """Handle search text change"""
+        if not self.pattern_manager:
+            return
+
+        # Clear and reload based on search
+        self.pattern_list.clear()
+
+        if text.strip():
+            # Search for matching patterns
+            patterns = self.pattern_manager.search_patterns(text)
+        else:
+            # Show all patterns
+            patterns = self.pattern_manager.get_all_patterns()
+
+        for pattern in patterns:
+            self.pattern_list.addItem(pattern.get_display_name())
+
+    def refresh(self):
+        """Refresh the pattern list display"""
+        self.load_patterns()
+
+    def set_pattern_manager(self, pattern_manager):
+        """Set the pattern manager and load patterns"""
+        self.pattern_manager = pattern_manager
+        self.load_patterns()
