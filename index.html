@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Patterns Playlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Test Patterns Display</h1>
+            <div class="controls">
+                <button id="playBtn">Play</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="nextBtn">Next</button>
+                <button id="prevBtn">Previous</button>
+                <span id="currentItemDisplay">No item loaded</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="display-area">
+                <video id="videoPlayer" controls style="display: none;"></video>
+                <img id="imagePlayer" style="display: none;" alt="Test Pattern">
+                <div id="placeholder" class="placeholder">
+                    <p>Load a playlist item to begin</p>
+                </div>
+            </div>
+
+            <div class="panels">
+                <div class="panel playlist-panel">
+                    <h2>Playlist</h2>
+                    <div class="panel-controls">
+                        <input type="text" id="mediaUrl" placeholder="Enter video/image URL">
+                        <select id="mediaType">
+                            <option value="auto">Auto-detect</option>
+                            <option value="video">Video</option>
+                            <option value="image">Image</option>
+                        </select>
+                        <button id="addToPlaylist">Add</button>
+                    </div>
+                    <div class="playlist-items" id="playlistItems">
+                        <p class="empty-playlist">Playlist is empty. Add items above.</p>
+                    </div>
+                </div>
+
+                <div class="panel settings-panel">
+                    <h2>Settings</h2>
+                    <div class="setting-item">
+                        <label for="imageDuration">Image Duration (seconds):</label>
+                        <input type="number" id="imageDuration" value="5" min="1" max="300">
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="autoLoop" checked>
+                            Loop playlist
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="autoPlay" checked>
+                            Auto-play on load
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <button id="clearPlaylist">Clear Playlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

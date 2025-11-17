@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #00ff88;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button {
+    background: #00ff88;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #00cc6a;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#currentItemDisplay {
+    margin-left: auto;
+    padding: 8px 15px;
+    background: #3d3d3d;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+}
+
+.display-area {
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#videoPlayer, #imagePlayer {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.placeholder {
+    text-align: center;
+    color: #666;
+    font-size: 20px;
+}
+
+.panels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel {
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.panel h2 {
+    color: #00ff88;
+    margin-bottom: 15px;
+    font-size: 20px;
+    border-bottom: 2px solid #3d3d3d;
+    padding-bottom: 10px;
+}
+
+.panel-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    border: 1px solid #3d3d3d;
+    border-radius: 5px;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #00ff88;
+}
+
+.playlist-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.playlist-item {
+    background: #3d3d3d;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.playlist-item:hover {
+    background: #4d4d4d;
+}
+
+.playlist-item.active {
+    background: #00ff88;
+    color: #1a1a1a;
+}
+
+.playlist-item .item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.playlist-item .item-url {
+    font-size: 12px;
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playlist-item .item-type {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.item-type.video {
+    background: #ff6b6b;
+    color: white;
+}
+
+.item-type.image {
+    background: #4ecdc4;
+    color: white;
+}
+
+.playlist-item .item-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.playlist-item button {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.empty-playlist {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 5px;
+    color: #b0b0b0;
+}
+
+.setting-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+#clearPlaylist {
+    background: #ff6b6b;
+    width: 100%;
+}
+
+#clearPlaylist:hover {
+    background: #ff5252;
+}
+
+/* Scrollbar styling */
+.playlist-items::-webkit-scrollbar {
+    width: 8px;
+}
+
+.playlist-items::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.playlist-items::-webkit-scrollbar-thumb {
+    background: #3d3d3d;
+    border-radius: 4px;
+}
+
+.playlist-items::-webkit-scrollbar-thumb:hover {
+    background: #4d4d4d;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .panels {
+        flex-direction: row;
+    }
+
+    .panel {
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .panels {
+        flex-direction: column;
+    }
+
+    .controls {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
