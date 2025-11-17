@@ -6,16 +6,25 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 ### Broadcast Standards
 
-#### 1. SMPTE Color Bars (`smpte_color_bars.svg`)
+#### 1. SMPTE Color Bars - 75% (`smpte_color_bars.svg`)
 - **Purpose**: Standard broadcast color calibration (SMPTE RP 219-2:2002)
 - **Features**: 75% amplitude color bars with PLUGE pattern
 - **Use Cases**:
-  - Broadcast equipment calibration
+  - Broadcast equipment calibration (most common variant)
   - Video monitor color accuracy testing
   - Hue and saturation verification
   - Signal level checking
 
-#### 2. EBU Color Bars (`ebu_color_bars.svg`)
+#### 2. SMPTE Color Bars - 100% (`smpte_color_bars_100.svg`)
+- **Purpose**: Full amplitude broadcast color calibration (SMPTE RP 219-2:2002)
+- **Features**: 100% amplitude color bars with PLUGE pattern
+- **Use Cases**:
+  - Testing equipment headroom and clipping
+  - Maximum saturation color accuracy
+  - Peak signal level verification
+  - High-end broadcast equipment calibration
+
+#### 3. EBU Color Bars (`ebu_color_bars.svg`)
 - **Purpose**: European broadcast standard (PAL/EBU)
 - **Features**: Full height 100% saturated color bars
 - **Use Cases**:
@@ -25,7 +34,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 ### Brightness and Contrast
 
-#### 3. Grayscale Steps (`grayscale_steps.svg`)
+#### 4. Grayscale Steps (`grayscale_steps.svg`)
 - **Purpose**: Gamma, brightness, and contrast calibration
 - **Features**: 21 discrete steps from 0% to 100% in 5% increments
 - **Use Cases**:
@@ -34,7 +43,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Shadow and highlight detail verification
   - Print calibration
 
-#### 4. Smooth Gradients (`gradient_smooth.svg`)
+#### 5. Smooth Gradients (`gradient_smooth.svg`)
 - **Purpose**: Smooth color transitions and gamma testing
 - **Features**: Linear gradients for grayscale, RGB, and CMY channels
 - **Use Cases**:
@@ -43,7 +52,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Color channel response testing
   - Gamma curve analysis
 
-#### 5. Dynamic Range Test (`dynamic_range.svg`)
+#### 6. Dynamic Range Test (`dynamic_range.svg`)
 - **Purpose**: Camera and monitor dynamic range testing
 - **Features**: 11 stops from -5 to +5 around 18% middle gray
 - **Use Cases**:
@@ -52,7 +61,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Monitor dynamic range assessment
   - Exposure calibration
 
-#### 6. PLUGE Pattern (`pluge.svg`)
+#### 7. PLUGE Pattern (`pluge.svg`)
 - **Purpose**: Black level and brightness calibration
 - **Features**: Picture Line-Up Generation Equipment standard pattern
 - **Use Cases**:
@@ -63,7 +72,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 ### Resolution and Sharpness
 
-#### 7. Resolution Chart (`resolution_chart.svg`)
+#### 8. Resolution Chart (`resolution_chart.svg`)
 - **Purpose**: Sharpness and resolution testing
 - **Features**: Multiple line widths, checkerboards, corner markers
 - **Use Cases**:
@@ -72,7 +81,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Optical resolution measurement
   - Compression artifact detection
 
-#### 8. Zone Plate (`zone_plate.svg`)
+#### 9. Zone Plate (`zone_plate.svg`)
 - **Purpose**: Resolution limits and aliasing detection
 - **Features**: Concentric circles with decreasing spacing
 - **Use Cases**:
@@ -81,7 +90,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Moiré pattern detection
   - Sensor/optics testing
 
-#### 9. Focus Chart (`focus_chart.svg`)
+#### 10. Focus Chart (`focus_chart.svg`)
 - **Purpose**: Focus accuracy and uniformity testing
 - **Features**: Siemens star patterns (center and corners)
 - **Use Cases**:
@@ -92,7 +101,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 ### Geometry and Distortion
 
-#### 10. Grid/Crosshatch (`grid_crosshatch.svg`)
+#### 11. Grid/Crosshatch (`grid_crosshatch.svg`)
 - **Purpose**: Geometry, linearity, and distortion testing
 - **Features**: Regular grid with diagonal reference lines
 - **Use Cases**:
@@ -101,7 +110,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Aspect ratio verification
   - Projector alignment
 
-#### 11. Circular Grid (`circular_grid.svg`)
+#### 12. Circular Grid (`circular_grid.svg`)
 - **Purpose**: Lens distortion testing
 - **Features**: Concentric circles and radial lines
 - **Use Cases**:
@@ -110,7 +119,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - Lens quality assessment
   - Wide-angle lens testing
 
-#### 12. Checkerboard (`checkerboard.svg`)
+#### 13. Checkerboard (`checkerboard.svg`)
 - **Purpose**: High-contrast pattern for multiple tests
 - **Features**: 16x9 checkerboard with 120px squares
 - **Use Cases**:
@@ -121,7 +130,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 ### Color Calibration
 
-#### 13. Color Checker Chart (`color_checker.svg`)
+#### 14. Color Checker Chart (`color_checker.svg`)
 - **Purpose**: Camera color calibration
 - **Features**: 24-patch reference chart (similar to X-Rite ColorChecker)
 - **Use Cases**:
@@ -130,7 +139,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
   - White balance verification
   - Post-processing color reference
 
-#### 14. White Balance Gray Card (`white_balance_gray_card.svg`)
+#### 15. White Balance Gray Card (`white_balance_gray_card.svg`)
 - **Purpose**: Camera white balance calibration
 - **Features**: 18% gray card with white and black references
 - **Use Cases**:
@@ -141,7 +150,7 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 ### Alignment and Registration
 
-#### 15. Alignment and Registration (`alignment_registration.svg`)
+#### 16. Alignment and Registration (`alignment_registration.svg`)
 - **Purpose**: Framing, positioning, and aspect ratio testing
 - **Features**: Safe area guides, registration marks, crosshairs
 - **Use Cases**:
@@ -198,7 +207,8 @@ Professional test patterns in SVG format for display, camera, and monitor calibr
 
 | File | Size | Primary Use |
 |------|------|-------------|
-| `smpte_color_bars.svg` | ~ | Broadcast color standard |
+| `smpte_color_bars.svg` | ~ | Broadcast color standard (75%) |
+| `smpte_color_bars_100.svg` | ~ | Broadcast color standard (100%) |
 | `ebu_color_bars.svg` | ~ | European broadcast standard |
 | `grayscale_steps.svg` | ~ | Gamma and contrast |
 | `gradient_smooth.svg` | ~ | Smooth gradients |
