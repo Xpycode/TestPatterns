@@ -76,6 +76,13 @@ python main.py
 
 ## Building Executables
 
+Production-ready build scripts are included for both platforms. The scripts automatically:
+- Create/activate virtual environment
+- Install dependencies
+- Generate application icons
+- Build distributable executables with PyInstaller
+- Clean up build artifacts
+
 ### macOS Build
 
 ```bash
@@ -84,7 +91,9 @@ chmod +x build_macos.sh
 ./build_macos.sh
 ```
 
-The macOS app bundle will be created in `dist/TestPatternPlayer.app`
+The macOS app bundle will be created in `build/dist/TestPatternPlayer.app`
+
+**Note**: On macOS, the script will automatically create an .icns icon file if `iconutil` is available.
 
 ### Windows Build
 
@@ -93,7 +102,9 @@ cd build
 build_windows.bat
 ```
 
-The portable Windows app will be created in `dist\TestPatternPlayer\`
+The portable Windows app will be created in `build\dist\TestPatternPlayer\`
+
+**To distribute**: Zip the entire `TestPatternPlayer` folder with all its files.
 
 ## Usage
 
@@ -117,6 +128,7 @@ The portable Windows app will be created in `dist\TestPatternPlayer\`
 - `F` or `F11` - Toggle fullscreen
 - `L` - Toggle loop
 - `ESC` - Exit fullscreen
+- `F1` - Show keyboard shortcuts help
 - `Up/Down` - Navigate library
 - `Delete` - Remove selected pattern
 - `Ctrl/Cmd + O` - Add pattern
@@ -244,8 +256,25 @@ test-pattern-app/
 - All sorting options update pattern manager and persist to JSON
 - rowsMoved signal handler for seamless drag-and-drop
 
-### Upcoming Phases
-- **Phase 10**: Polish and build scripts
+**Phase 10: Polish and Build** ✓ Complete
+- About dialog with application information and features
+- Keyboard Shortcuts help dialog with comprehensive shortcut list
+- F1 shortcut to open keyboard shortcuts dialog
+- Help menu with Keyboard Shortcuts and About actions
+- Application icon generation script (SMPTE-inspired color bars)
+- Multiple icon sizes (16x16 to 1024x1024) for all platforms
+- Windows .ico file for executable
+- Complete macOS build script (build_macos.sh) with PyInstaller
+- Complete Windows build script (build_windows.bat) with PyInstaller
+- Automated icon conversion to .icns on macOS
+- Build scripts handle virtual environment and dependencies
+- Clean distribution-ready executables
+
+---
+
+## 🎉 All Phases Complete!
+
+The Test Pattern Player application is now fully implemented with all planned features. The application is ready for building and distribution on macOS and Windows platforms.
 
 ## Troubleshooting
 

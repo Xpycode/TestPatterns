@@ -3,7 +3,8 @@ Main Window - Primary application window
 """
 
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QSplitter
+    QMainWindow, QWidget, QSplitter, QMessageBox, QDialog,
+    QVBoxLayout, QLabel, QTextEdit, QPushButton
 )
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QKeySequence, QShortcut
@@ -118,7 +119,17 @@ class MainWindow(QMainWindow):
         # Help menu
         help_menu = menubar.addMenu("&Help")
 
+        # Keyboard shortcuts action
+        shortcuts_action = QAction("&Keyboard Shortcuts", self)
+        shortcuts_action.setShortcut("F1")
+        shortcuts_action.triggered.connect(self._show_shortcuts_dialog)
+        help_menu.addAction(shortcuts_action)
+
+        help_menu.addSeparator()
+
+        # About action
         about_action = QAction("&About", self)
+        about_action.triggered.connect(self._show_about_dialog)
         help_menu.addAction(about_action)
 
     def _on_pattern_selected(self, pattern):
@@ -233,3 +244,76 @@ class MainWindow(QMainWindow):
             self.player_panel.update_fullscreen_button(True)
 
             print("Entered fullscreen mode")
+
+    def _show_about_dialog(self):
+        """Show About dialog"""
+        about_text = """<h2>Test Pattern Player</h2>
+        <p><b>Version:</b> 1.0.0</p>
+        <p>A professional video test pattern player for broadcast and video production.</p>
+        <p><b>Features:</b></p>
+        <ul>
+            <li>Professional SMPTE and EBU test patterns</li>
+            <li>Custom image and video pattern import</li>
+            <li>Full video playback with controls</li>
+            <li>Fullscreen mode for testing displays</li>
+            <li>Drag-and-drop library organization</li>
+        </ul>
+        <p><b>Built with:</b> PySide6 (Qt for Python)</p>
+        <p>© 2025 Test Pattern Player</p>
+        """
+
+        QMessageBox.about(self, "About Test Pattern Player", about_text)
+
+    def _show_shortcuts_dialog(self):
+        """Show Keyboard Shortcuts help dialog"""
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Keyboard Shortcuts")
+        dialog.setMinimumSize(500, 400)
+
+        layout = QVBoxLayout(dialog)
+
+        # Title
+        title = QLabel("<h2>Keyboard Shortcuts</h2>")
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(title)
+
+        # Shortcuts text
+        shortcuts_text = QTextEdit()
+        shortcuts_text.setReadOnly(True)
+        shortcuts_text.setHtml("""
+        <h3>Playback Controls</h3>
+        <table cellpadding="5">
+            <tr><td><b>Space</b></td><td>Play/Pause video</td></tr>
+            <tr><td><b>L</b></td><td>Toggle loop</td></tr>
+        </table>
+
+        <h3>View Controls</h3>
+        <table cellpadding="5">
+            <tr><td><b>F</b> or <b>F11</b></td><td>Toggle fullscreen</td></tr>
+            <tr><td><b>ESC</b></td><td>Exit fullscreen</td></tr>
+        </table>
+
+        <h3>Library Navigation</h3>
+        <table cellpadding="5">
+            <tr><td><b>Up/Down Arrow</b></td><td>Navigate pattern list</td></tr>
+            <tr><td><b>Delete</b></td><td>Remove selected pattern</td></tr>
+            <tr><td><b>Ctrl/Cmd+O</b></td><td>Add pattern</td></tr>
+        </table>
+
+        <h3>Application</h3>
+        <table cellpadding="5">
+            <tr><td><b>F1</b></td><td>Show keyboard shortcuts (this dialog)</td></tr>
+            <tr><td><b>Ctrl/Cmd+Q</b></td><td>Quit application</td></tr>
+        </table>
+
+        <h3>Library Organization</h3>
+        <p><i>Tip: You can also drag and drop patterns in the library to reorder them!</i></p>
+        """)
+        layout.addWidget(shortcuts_text)
+
+        # Close button
+        close_button = QPushButton("Close")
+        close_button.clicked.connect(dialog.accept)
+        layout.addWidget(close_button)
+
+        dialog.exec()
