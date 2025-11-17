@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>SMPTE RP 219:2002 - Pattern 2 (Chroma Setting)</title>
+  <desc>SMPTE RP 219:2002 HD Pattern 2 - Color difference setting reference signal</desc>
+
+  <!-- Left side panel: 100% Cyan (16:9 side panel) -->
+  <rect x="0" y="0" width="240" height="1080" fill="#00FFFF"/>
+
+  <!-- Center area (4:3 safe area): 75% White -->
+  <rect x="240" y="0" width="1440" height="1080" fill="#BFBFBF"/>
+
+  <!-- Right side panel: 100% Blue (16:9 side panel) -->
+  <rect x="1680" y="0" width="240" height="1080" fill="#0000FF"/>
+
+  <!-- 4:3 safe area border indicators -->
+  <line x1="240" y1="0" x2="240" y2="1080" stroke="#808080" stroke-width="2" stroke-dasharray="10,5"/>
+  <line x1="1680" y1="0" x2="1680" y2="1080" stroke="#808080" stroke-width="2" stroke-dasharray="10,5"/>
+
+  <!-- Labels -->
+  <text x="120" y="540" font-family="Arial, sans-serif" font-size="32" fill="#000000" text-anchor="middle" font-weight="bold" transform="rotate(-90 120 540)">100% CYAN</text>
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="72" fill="#404040" text-anchor="middle" font-weight="bold">75% WHITE</text>
+  <text x="960" y="620" font-family="Arial, sans-serif" font-size="28" fill="#606060" text-anchor="middle">Chroma Setting Reference</text>
+  <text x="1800" y="540" font-family="Arial, sans-serif" font-size="32" fill="#FFFFFF" text-anchor="middle" font-weight="bold" transform="rotate(-90 1800 540)">100% BLUE</text>
+
+  <!-- Title -->
+  <text x="960" y="60" font-family="Arial, sans-serif" font-size="36" fill="#000000" text-anchor="middle" font-weight="bold">SMPTE RP 219:2002 - PATTERN 2</text>
+  <text x="960" y="1050" font-family="Arial, sans-serif" font-size="20" fill="#404040" text-anchor="middle">Color Difference / Chroma Setting Reference Signal</text>
+
+  <!-- 4:3 safe area labels -->
+  <text x="240" y="30" font-family="monospace" font-size="16" fill="#606060">4:3 Safe Area</text>
+  <text x="1680" y="30" font-family="monospace" font-size="16" fill="#606060" text-anchor="end">4:3 Safe Area</text>
+</svg>
