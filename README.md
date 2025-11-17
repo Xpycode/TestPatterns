@@ -202,8 +202,18 @@ test-pattern-app/
 - Success notification after adding patterns
 - All changes persist to library.json
 
+**Phase 6: Video Playback** ✓ Complete
+- QtMultimedia integration (QMediaPlayer, QAudioOutput, QVideoWidget)
+- Video widget displays in place of image label for videos
+- Play/Pause button functionality with state updates
+- Seek slider connected to video position with live updates
+- Time display shows current position and total duration (MM:SS format)
+- Volume control with slider
+- Automatic playback start when video selected
+- Error handling for unsupported codecs and file issues
+- Clean widget swapping between images and videos
+
 ### Upcoming Phases
-- **Phase 6**: Video playback
 - **Phase 7**: Playback controls
 - **Phase 8**: Fullscreen mode
 - **Phase 9**: Library enhancements

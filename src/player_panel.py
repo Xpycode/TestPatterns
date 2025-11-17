@@ -5,8 +5,10 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel,
     QPushButton, QSlider, QFrame
 )
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QUrl
 from PySide6.QtGui import QFont, QPixmap
+from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
+from PySide6.QtMultimediaWidgets import QVideoWidget
 
 
 class PlayerPanel(QWidget):
@@ -16,7 +18,15 @@ class PlayerPanel(QWidget):
         super().__init__(parent)
         self.current_pattern = None
         self.current_pixmap = None
+
+        # Video playback components
+        self.media_player = None
+        self.audio_output = None
+        self.video_widget = None
+        self.is_playing_video = False
+
         self._init_ui()
+        self._init_video_player()
 
     def _init_ui(self):
         """Initialize the player panel UI"""
@@ -30,8 +40,8 @@ class PlayerPanel(QWidget):
         self.display_frame.setStyleSheet("background-color: #1e1e1e;")
 
         # Display layout (will hold QLabel for images or QVideoWidget for videos)
-        display_layout = QVBoxLayout(self.display_frame)
-        display_layout.setContentsMargins(0, 0, 0, 0)
+        self.display_layout = QVBoxLayout(self.display_frame)
+        self.display_layout.setContentsMargins(0, 0, 0, 0)
 
         # Display label (shows images or placeholder text)
         self.display_label = QLabel("Select a pattern from the library")
@@ -44,7 +54,7 @@ class PlayerPanel(QWidget):
             }
         """)
         self.display_label.setScaledContents(False)  # We'll handle scaling manually
-        display_layout.addWidget(self.display_label)
+        self.display_layout.addWidget(self.display_label)
 
         layout.addWidget(self.display_frame)
 
@@ -159,6 +169,31 @@ class PlayerPanel(QWidget):
             }
         """
 
+    def _init_video_player(self):
+        """Initialize video playback components"""
+        # Create media player
+        self.media_player = QMediaPlayer()
+        self.audio_output = QAudioOutput()
+        self.media_player.setAudioOutput(self.audio_output)
+
+        # Create video widget (hidden initially)
+        self.video_widget = QVideoWidget()
+        self.media_player.setVideoOutput(self.video_widget)
+
+        # Connect media player signals
+        self.media_player.positionChanged.connect(self._on_position_changed)
+        self.media_player.durationChanged.connect(self._on_duration_changed)
+        self.media_player.playbackStateChanged.connect(self._on_playback_state_changed)
+        self.media_player.errorOccurred.connect(self._on_media_error)
+
+        # Connect playback controls
+        self.play_button.clicked.connect(self._on_play_pause_clicked)
+        self.seek_slider.sliderMoved.connect(self._on_seek_slider_moved)
+
+        # Set default volume
+        self.audio_output.setVolume(self.volume_slider.value() / 100.0)
+        self.volume_slider.valueChanged.connect(self._on_volume_changed)
+
     def display_pattern(self, pattern):
         """
         Display a pattern (image or video)
@@ -182,9 +217,7 @@ class PlayerPanel(QWidget):
         if pattern.is_image():
             self._display_image(pattern.path)
         elif pattern.is_video():
-            # Video playback will be implemented in Phase 6
-            self._show_placeholder(f"Video playback coming in Phase 6\n{pattern.name}")
-            print(f"Video pattern selected: {pattern.name} (playback in Phase 6)")
+            self._display_video(pattern.path)
         else:
             self._show_placeholder(f"Unknown pattern type:\n{pattern.type}")
 
@@ -260,4 +293,129 @@ class PlayerPanel(QWidget):
         """Clear the display and show placeholder"""
         self.current_pattern = None
         self.current_pixmap = None
+        self._stop_video()
         self._show_placeholder("Select a pattern from the library")
+
+    def _display_video(self, video_path):
+        """
+        Display and play a video file
+
+        Args:
+            video_path: Path to the video file
+        """
+        try:
+            # Stop any currently playing video
+            self._stop_video()
+
+            # Hide image label and show video widget
+            self.display_label.hide()
+            if self.video_widget not in [self.display_layout.itemAt(i).widget()
+                                         for i in range(self.display_layout.count())]:
+                self.display_layout.addWidget(self.video_widget)
+            self.video_widget.show()
+
+            # Load the video
+            video_url = QUrl.fromLocalFile(str(video_path))
+            self.media_player.setSource(video_url)
+
+            # Enable video controls
+            self.play_button.setEnabled(True)
+            self.seek_slider.setEnabled(True)
+
+            # Mark as playing video
+            self.is_playing_video = True
+
+            # Start playing
+            self.media_player.play()
+
+            print(f"Playing video: {video_path}")
+
+        except Exception as e:
+            self._show_placeholder(f"Error loading video:\n{str(e)}")
+            print(f"Error displaying video: {e}")
+
+    def _stop_video(self):
+        """Stop video playback and cleanup"""
+        if self.is_playing_video:
+            self.media_player.stop()
+            self.video_widget.hide()
+            self.display_label.show()
+            self.is_playing_video = False
+
+            # Disable video controls
+            self.play_button.setEnabled(False)
+            self.seek_slider.setEnabled(False)
+            self.seek_slider.setValue(0)
+            self.time_label.setText("00:00 / 00:00")
+
+    def _on_play_pause_clicked(self):
+        """Handle play/pause button click"""
+        if not self.is_playing_video:
+            return
+
+        if self.media_player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
+            self.media_player.pause()
+        else:
+            self.media_player.play()
+
+    def _on_playback_state_changed(self, state):
+        """Handle playback state changes"""
+        if state == QMediaPlayer.PlaybackState.PlayingState:
+            self.play_button.setText("⏸ Pause")
+        else:
+            self.play_button.setText("▶ Play")
+
+    def _on_position_changed(self, position):
+        """Handle video position change"""
+        if not self.is_playing_video:
+            return
+
+        # Update seek slider (block signals to avoid feedback loop)
+        self.seek_slider.blockSignals(True)
+        self.seek_slider.setValue(position)
+        self.seek_slider.blockSignals(False)
+
+        # Update time display
+        self._update_time_display(position, self.media_player.duration())
+
+    def _on_duration_changed(self, duration):
+        """Handle video duration change"""
+        if not self.is_playing_video:
+            return
+
+        self.seek_slider.setRange(0, duration)
+        self._update_time_display(self.media_player.position(), duration)
+
+    def _on_seek_slider_moved(self, position):
+        """Handle seek slider movement"""
+        if self.is_playing_video:
+            self.media_player.setPosition(position)
+
+    def _on_volume_changed(self, value):
+        """Handle volume slider change"""
+        self.audio_output.setVolume(value / 100.0)
+
+    def _on_media_error(self, error, error_string):
+        """Handle media player errors"""
+        print(f"Media error: {error_string}")
+        self._show_placeholder(f"Video playback error:\n{error_string}")
+        self.is_playing_video = False
+
+    def _update_time_display(self, position, duration):
+        """
+        Update the time display label
+
+        Args:
+            position: Current position in milliseconds
+            duration: Total duration in milliseconds
+        """
+        def format_time(ms):
+            """Format milliseconds to MM:SS"""
+            seconds = int(ms / 1000)
+            minutes = seconds // 60
+            seconds = seconds % 60
+            return f"{minutes:02d}:{seconds:02d}"
+
+        current_time = format_time(position)
+        total_time = format_time(duration)
+        self.time_label.setText(f"{current_time} / {total_time}")
