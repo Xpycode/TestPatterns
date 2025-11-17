@@ -1,10 +1,14 @@
 """Library Panel Widget - Displays test pattern catalog"""
 
+from pathlib import Path
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QListWidget,
-    QPushButton, QLineEdit, QLabel
+    QPushButton, QLineEdit, QLabel, QFileDialog,
+    QMessageBox, QInputDialog, QMenu
 )
 from PySide6.QtCore import Qt, Signal
+
+from .models import Pattern
 
 
 class LibraryPanel(QWidget):
@@ -43,6 +47,8 @@ class LibraryPanel(QWidget):
         self.pattern_list = QListWidget()
         self.pattern_list.setAlternatingRowColors(True)
         self.pattern_list.setSpacing(2)
+        self.pattern_list.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.pattern_list.customContextMenuRequested.connect(self._show_context_menu)
         layout.addWidget(self.pattern_list)
 
         # Add Pattern button
@@ -69,7 +75,7 @@ class LibraryPanel(QWidget):
         # Connect signals
         self.pattern_list.currentRowChanged.connect(self._on_selection_changed)
         self.search_bar.textChanged.connect(self._on_search_changed)
-        # Add button will be connected in Phase 5
+        self.add_button.clicked.connect(self._on_add_pattern)
 
     def load_patterns(self):
         """Load patterns from pattern manager into the list"""
@@ -118,3 +124,211 @@ class LibraryPanel(QWidget):
         """Set the pattern manager and load patterns"""
         self.pattern_manager = pattern_manager
         self.load_patterns()
+
+    def _on_add_pattern(self):
+        """Handle Add Pattern button click"""
+        if not self.pattern_manager:
+            return
+
+        # Open file dialog for selecting patterns
+        file_dialog = QFileDialog(self)
+        file_dialog.setWindowTitle("Add Test Patterns")
+        file_dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)  # Multiple files
+
+        # Set file filters for supported formats
+        filters = (
+            "All Supported Files (*.png *.jpg *.jpeg *.tiff *.bmp *.mp4 *.mov *.mkv *.avi *.webm);;"
+            "Images (*.png *.jpg *.jpeg *.tiff *.bmp);;"
+            "Videos (*.mp4 *.mov *.mkv *.avi *.webm);;"
+            "All Files (*.*)"
+        )
+        file_dialog.setNameFilter(filters)
+
+        # Show dialog and get selected files
+        if file_dialog.exec():
+            file_paths = file_dialog.selectedFiles()
+            self._add_files_to_library(file_paths)
+
+    def _add_files_to_library(self, file_paths):
+        """
+        Add selected files to the pattern library
+
+        Args:
+            file_paths: List of file paths to add
+        """
+        if not file_paths:
+            return
+
+        added_count = 0
+        for file_path in file_paths:
+            path = Path(file_path)
+
+            # Determine pattern type based on extension
+            ext = path.suffix.lower()
+            image_exts = {'.png', '.jpg', '.jpeg', '.tiff', '.bmp'}
+            video_exts = {'.mp4', '.mov', '.mkv', '.avi', '.webm'}
+
+            if ext in image_exts:
+                pattern_type = "image"
+            elif ext in video_exts:
+                pattern_type = "video"
+            else:
+                print(f"Unsupported file type: {file_path}")
+                continue
+
+            # Create pattern with file name (without extension) as name
+            pattern_name = path.stem
+
+            # Create new pattern
+            pattern = Pattern.create(
+                name=pattern_name,
+                path=str(path),
+                pattern_type=pattern_type,
+                is_builtin=False
+            )
+
+            # Add to manager
+            if self.pattern_manager.add_pattern(pattern):
+                added_count += 1
+                print(f"Added pattern: {pattern_name} ({pattern_type})")
+            else:
+                print(f"Failed to add pattern: {pattern_name}")
+
+        # Refresh the display
+        if added_count > 0:
+            self.refresh()
+            QMessageBox.information(
+                self,
+                "Patterns Added",
+                f"Successfully added {added_count} pattern(s) to the library."
+            )
+
+    def _show_context_menu(self, position):
+        """Show context menu for pattern list"""
+        # Get the item at the clicked position
+        item = self.pattern_list.itemAt(position)
+        if not item:
+            return
+
+        # Get the pattern index
+        row = self.pattern_list.row(item)
+        pattern = self.pattern_manager.get_pattern_by_index(row)
+        if not pattern:
+            return
+
+        # Create context menu
+        menu = QMenu(self)
+
+        # Rename action
+        rename_action = menu.addAction("Rename...")
+        rename_action.triggered.connect(lambda: self._on_rename_pattern(pattern, row))
+
+        # Delete action (only if not builtin)
+        if not pattern.is_builtin:
+            delete_action = menu.addAction("Delete")
+            delete_action.triggered.connect(lambda: self._on_delete_pattern(pattern, row))
+        else:
+            # Show grayed out delete option for builtin patterns
+            delete_action = menu.addAction("Delete (Built-in)")
+            delete_action.setEnabled(False)
+
+        menu.addSeparator()
+
+        # Move up/down actions
+        if row > 0:
+            move_up_action = menu.addAction("Move Up")
+            move_up_action.triggered.connect(lambda: self._on_move_pattern(row, row - 1))
+
+        if row < self.pattern_list.count() - 1:
+            move_down_action = menu.addAction("Move Down")
+            move_down_action.triggered.connect(lambda: self._on_move_pattern(row, row + 1))
+
+        # Show the menu at the cursor position
+        menu.exec(self.pattern_list.mapToGlobal(position))
+
+    def _on_rename_pattern(self, pattern, row):
+        """
+        Rename a pattern
+
+        Args:
+            pattern: Pattern object to rename
+            row: Row index in the list
+        """
+        # Show input dialog
+        new_name, ok = QInputDialog.getText(
+            self,
+            "Rename Pattern",
+            "Enter new name:",
+            QLineEdit.EchoMode.Normal,
+            pattern.name
+        )
+
+        if ok and new_name.strip():
+            # Update pattern name
+            if self.pattern_manager.update_pattern(pattern.id, name=new_name.strip()):
+                print(f"Renamed pattern: {pattern.name} -> {new_name.strip()}")
+                self.refresh()
+            else:
+                QMessageBox.warning(
+                    self,
+                    "Rename Failed",
+                    "Failed to rename the pattern."
+                )
+
+    def _on_delete_pattern(self, pattern, row):
+        """
+        Delete a pattern with confirmation
+
+        Args:
+            pattern: Pattern object to delete
+            row: Row index in the list
+        """
+        # Don't allow deleting builtin patterns
+        if pattern.is_builtin:
+            QMessageBox.warning(
+                self,
+                "Cannot Delete",
+                "Built-in patterns cannot be deleted."
+            )
+            return
+
+        # Show confirmation dialog
+        reply = QMessageBox.question(
+            self,
+            "Delete Pattern",
+            f"Are you sure you want to delete '{pattern.name}'?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No
+        )
+
+        if reply == QMessageBox.StandardButton.Yes:
+            # Delete the pattern
+            if self.pattern_manager.remove_pattern(pattern.id):
+                print(f"Deleted pattern: {pattern.name}")
+                self.refresh()
+            else:
+                QMessageBox.warning(
+                    self,
+                    "Delete Failed",
+                    "Failed to delete the pattern."
+                )
+
+    def _on_move_pattern(self, from_row, to_row):
+        """
+        Move a pattern from one position to another
+
+        Args:
+            from_row: Source row index
+            to_row: Destination row index
+        """
+        if self.pattern_manager.move_pattern(from_row, to_row):
+            print(f"Moved pattern from row {from_row} to {to_row}")
+            self.refresh()
+            # Reselect the moved item
+            self.pattern_list.setCurrentRow(to_row)
+        else:
+            QMessageBox.warning(
+                self,
+                "Move Failed",
+                "Failed to move the pattern."
+            )

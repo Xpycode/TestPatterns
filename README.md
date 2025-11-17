@@ -190,9 +190,19 @@ test-pattern-app/
 - Placeholder messages for errors and non-image patterns
 - Centered display with proper alignment
 
-### Upcoming Phases
+**Phase 5: User Pattern Import** ✓ Complete
+- Add Pattern button with QFileDialog for selecting files
+- Multiple file selection support
+- File type filtering (images: PNG, JPG, TIFF, BMP; videos: MP4, MOV, MKV, AVI, WEBM)
+- Automatic pattern type detection based on file extension
+- Right-click context menu on patterns
+- Rename pattern with input dialog
+- Delete pattern with confirmation dialog (builtin patterns protected)
+- Move Up/Move Down in context menu for custom ordering
+- Success notification after adding patterns
+- All changes persist to library.json
 
-- **Phase 5**: User pattern import
+### Upcoming Phases
 - **Phase 6**: Video playback
 - **Phase 7**: Playback controls
 - **Phase 8**: Fullscreen mode
