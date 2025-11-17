@@ -88,8 +88,32 @@ class MainWindow(QMainWindow):
         # View menu
         view_menu = menubar.addMenu("&View")
 
+        # Fullscreen action
+        fullscreen_action = QAction("&Fullscreen", self)
+        fullscreen_action.setShortcut("F11")
+        fullscreen_action.triggered.connect(self._toggle_fullscreen)
+        view_menu.addAction(fullscreen_action)
+
         # Library menu
         library_menu = menubar.addMenu("&Library")
+
+        # Sort submenu
+        sort_menu = library_menu.addMenu("&Sort By")
+
+        # Sort by Name action
+        sort_name_action = QAction("&Name", self)
+        sort_name_action.triggered.connect(self.library_panel.sort_by_name)
+        sort_menu.addAction(sort_name_action)
+
+        # Sort by Type action
+        sort_type_action = QAction("&Type", self)
+        sort_type_action.triggered.connect(self.library_panel.sort_by_type)
+        sort_menu.addAction(sort_type_action)
+
+        # Sort by Custom Order action
+        sort_custom_action = QAction("&Custom Order", self)
+        sort_custom_action.triggered.connect(self.library_panel.sort_by_custom)
+        sort_menu.addAction(sort_custom_action)
 
         # Help menu
         help_menu = menubar.addMenu("&Help")

@@ -233,8 +233,18 @@ test-pattern-app/
 - Signal-based communication between player panel and main window
 - Fullscreen works for both images and videos
 
+**Phase 9: Library Enhancements** ✓ Complete
+- Drag-and-drop reordering of patterns in library list
+- Automatic pattern order synchronization with pattern manager
+- Sort by Name (alphabetical order)
+- Sort by Type (groups images and videos)
+- Sort by Custom Order (manual drag-and-drop order)
+- Library menu with "Sort By" submenu
+- Fullscreen menu item added to View menu
+- All sorting options update pattern manager and persist to JSON
+- rowsMoved signal handler for seamless drag-and-drop
+
 ### Upcoming Phases
-- **Phase 9**: Library enhancements
 - **Phase 10**: Polish and build scripts
 
 ## Troubleshooting

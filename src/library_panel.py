@@ -49,6 +49,14 @@ class LibraryPanel(QWidget):
         self.pattern_list.setSpacing(2)
         self.pattern_list.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.pattern_list.customContextMenuRequested.connect(self._show_context_menu)
+
+        # Enable drag-and-drop reordering
+        self.pattern_list.setDragDropMode(QListWidget.DragDropMode.InternalMove)
+        self.pattern_list.setDefaultDropAction(Qt.DropAction.MoveAction)
+
+        # Connect model changed signal for drag-and-drop
+        self.pattern_list.model().rowsMoved.connect(self._on_rows_moved)
+
         layout.addWidget(self.pattern_list)
 
         # Add Pattern button
@@ -332,3 +340,52 @@ class LibraryPanel(QWidget):
                 "Move Failed",
                 "Failed to move the pattern."
             )
+
+    def _on_rows_moved(self, parent, start, end, destination, row):
+        """
+        Handle drag-and-drop reordering of patterns
+
+        Args:
+            parent: Parent index (unused for list)
+            start: Starting row that was moved
+            end: Ending row that was moved
+            destination: Destination parent index
+            row: Destination row
+        """
+        # Calculate the actual destination row
+        # Qt's rowsMoved signal uses row as the position before the move
+        if row > start:
+            # Moving down: adjust for the removed item
+            to_row = row - 1
+        else:
+            # Moving up: use row as-is
+            to_row = row
+
+        # Update the pattern manager
+        if self.pattern_manager:
+            # Move the pattern in the manager
+            if self.pattern_manager.move_pattern(start, to_row):
+                print(f"Drag-drop moved pattern from row {start} to {to_row}")
+            else:
+                print(f"Failed to update pattern order after drag-drop")
+
+    def sort_by_name(self):
+        """Sort patterns alphabetically by name"""
+        if self.pattern_manager:
+            self.pattern_manager.sort_patterns("name")
+            self.refresh()
+            print("Sorted patterns by name")
+
+    def sort_by_type(self):
+        """Sort patterns by type (images, then videos)"""
+        if self.pattern_manager:
+            self.pattern_manager.sort_patterns("type")
+            self.refresh()
+            print("Sorted patterns by type")
+
+    def sort_by_custom(self):
+        """Sort patterns by custom order"""
+        if self.pattern_manager:
+            self.pattern_manager.sort_patterns("custom")
+            self.refresh()
+            print("Sorted patterns by custom order")
