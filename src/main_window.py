@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (
     QMainWindow, QWidget, QSplitter
 )
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QKeySequence, QShortcut
 
 from .library_panel import LibraryPanel
 from .player_panel import PlayerPanel
@@ -31,6 +31,10 @@ class MainWindow(QMainWindow):
         # Initialize UI
         self._init_ui()
         self._create_menu_bar()
+        self._setup_shortcuts()
+
+        # Load saved preferences
+        self._load_preferences()
 
     def _init_ui(self):
         """Initialize the user interface"""
@@ -92,3 +96,49 @@ class MainWindow(QMainWindow):
         print(f"Pattern selected: {pattern.name} ({pattern.type})")
         # Display the pattern in the player panel
         self.player_panel.display_pattern(pattern)
+
+    def _setup_shortcuts(self):
+        """Setup keyboard shortcuts"""
+        # Space: Play/Pause
+        play_pause_shortcut = QShortcut(QKeySequence(Qt.Key.Key_Space), self)
+        play_pause_shortcut.activated.connect(self._on_play_pause_shortcut)
+
+        # L: Toggle loop
+        loop_shortcut = QShortcut(QKeySequence(Qt.Key.Key_L), self)
+        loop_shortcut.activated.connect(self._on_loop_shortcut)
+
+        # F or F11: Fullscreen (will be implemented in Phase 8)
+        # ESC: Exit fullscreen (will be implemented in Phase 8)
+
+    def _on_play_pause_shortcut(self):
+        """Handle Space key for play/pause"""
+        # Trigger the play button click
+        if self.player_panel.play_button.isEnabled():
+            self.player_panel.play_button.click()
+
+    def _on_loop_shortcut(self):
+        """Handle L key for loop toggle"""
+        # Toggle the loop button
+        if self.player_panel.loop_button.isEnabled():
+            self.player_panel.loop_button.toggle()
+            # Save preference
+            self._save_loop_preference()
+
+    def _load_preferences(self):
+        """Load saved preferences from pattern manager"""
+        # Load loop preference (default is True)
+        loop_enabled = self.pattern_manager.get_setting("default_loop", True)
+        self.player_panel.set_loop_enabled(loop_enabled)
+        print(f"Loaded loop preference: {loop_enabled}")
+
+    def _save_loop_preference(self):
+        """Save loop preference to pattern manager"""
+        loop_enabled = self.player_panel.get_loop_enabled()
+        self.pattern_manager.set_setting("default_loop", loop_enabled)
+        print(f"Saved loop preference: {loop_enabled}")
+
+    def closeEvent(self, event):
+        """Handle window close event"""
+        # Save loop preference before closing
+        self._save_loop_preference()
+        super().closeEvent(event)

@@ -213,8 +213,17 @@ test-pattern-app/
 - Error handling for unsupported codecs and file issues
 - Clean widget swapping between images and videos
 
+**Phase 7: Playback Controls** ✓ Complete
+- Loop button functionality with toggle state
+- End-of-playback detection via mediaStatusChanged signal
+- Automatic video restart when loop is enabled
+- Loop preference persistence (saves to settings)
+- Keyboard shortcut: Space for play/pause
+- Keyboard shortcut: L for loop toggle
+- Loop preference loaded on application startup
+- Loop state saved when application closes
+
 ### Upcoming Phases
-- **Phase 7**: Playback controls
 - **Phase 8**: Fullscreen mode
 - **Phase 9**: Library enhancements
 - **Phase 10**: Polish and build scripts

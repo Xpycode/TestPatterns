@@ -24,6 +24,7 @@ class PlayerPanel(QWidget):
         self.audio_output = None
         self.video_widget = None
         self.is_playing_video = False
+        self.loop_enabled = True  # Loop enabled by default
 
         self._init_ui()
         self._init_video_player()
@@ -185,10 +186,12 @@ class PlayerPanel(QWidget):
         self.media_player.durationChanged.connect(self._on_duration_changed)
         self.media_player.playbackStateChanged.connect(self._on_playback_state_changed)
         self.media_player.errorOccurred.connect(self._on_media_error)
+        self.media_player.mediaStatusChanged.connect(self._on_media_status_changed)
 
         # Connect playback controls
         self.play_button.clicked.connect(self._on_play_pause_clicked)
         self.seek_slider.sliderMoved.connect(self._on_seek_slider_moved)
+        self.loop_button.clicked.connect(self._on_loop_clicked)
 
         # Set default volume
         self.audio_output.setVolume(self.volume_slider.value() / 100.0)
@@ -321,6 +324,7 @@ class PlayerPanel(QWidget):
             # Enable video controls
             self.play_button.setEnabled(True)
             self.seek_slider.setEnabled(True)
+            self.loop_button.setEnabled(True)
 
             # Mark as playing video
             self.is_playing_video = True
@@ -345,6 +349,7 @@ class PlayerPanel(QWidget):
             # Disable video controls
             self.play_button.setEnabled(False)
             self.seek_slider.setEnabled(False)
+            self.loop_button.setEnabled(False)
             self.seek_slider.setValue(0)
             self.time_label.setText("00:00 / 00:00")
 
@@ -419,3 +424,42 @@ class PlayerPanel(QWidget):
         current_time = format_time(position)
         total_time = format_time(duration)
         self.time_label.setText(f"{current_time} / {total_time}")
+
+    def _on_loop_clicked(self):
+        """Handle loop button click"""
+        self.loop_enabled = self.loop_button.isChecked()
+        print(f"Loop {'enabled' if self.loop_enabled else 'disabled'}")
+
+    def _on_media_status_changed(self, status):
+        """Handle media status changes (detect end of playback)"""
+        if not self.is_playing_video:
+            return
+
+        # Check if video has ended
+        if status == QMediaPlayer.MediaStatus.EndOfMedia:
+            if self.loop_enabled:
+                # Restart the video
+                print("Video ended, restarting (loop enabled)")
+                self.media_player.setPosition(0)
+                self.media_player.play()
+            else:
+                print("Video ended")
+
+    def set_loop_enabled(self, enabled):
+        """
+        Set loop state (used for loading saved preference)
+
+        Args:
+            enabled: True to enable loop, False to disable
+        """
+        self.loop_enabled = enabled
+        self.loop_button.setChecked(enabled)
+
+    def get_loop_enabled(self):
+        """
+        Get current loop state
+
+        Returns:
+            True if loop is enabled, False otherwise
+        """
+        return self.loop_enabled
