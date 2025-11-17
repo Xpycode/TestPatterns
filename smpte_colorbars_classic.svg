@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>SMPTE Color Bars (Classic)</title>
+  <desc>Classic SMPTE color bars test pattern with 75% amplitude bars, reverse bars, and PLUGE</desc>
+
+  <defs>
+    <!-- Gradient for bottom right ramp -->
+    <linearGradient id="whiteRamp" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Top Section: 75% Color Bars (0-720px height, 2/3 of 1080) -->
+  <rect x="0" y="0" width="274.3" height="720" fill="#BFBFBF"/>        <!-- 75% Gray -->
+  <rect x="274.3" y="0" width="274.3" height="720" fill="#BFBF00"/>    <!-- 75% Yellow -->
+  <rect x="548.6" y="0" width="274.3" height="720" fill="#00BFBF"/>    <!-- 75% Cyan -->
+  <rect x="822.9" y="0" width="274.3" height="720" fill="#00BF00"/>    <!-- 75% Green -->
+  <rect x="1097.1" y="0" width="274.3" height="720" fill="#BF00BF"/>   <!-- 75% Magenta -->
+  <rect x="1371.4" y="0" width="274.3" height="720" fill="#BF0000"/>   <!-- 75% Red -->
+  <rect x="1645.7" y="0" width="274.3" height="720" fill="#0000BF"/>   <!-- 75% Blue -->
+
+  <!-- Middle Section: Reverse Bars (720-810px, 90px height) -->
+  <rect x="0" y="720" width="274.3" height="90" fill="#0000BF"/>       <!-- 75% Blue -->
+  <rect x="274.3" y="720" width="274.3" height="90" fill="#000000"/>   <!-- Black -->
+  <rect x="548.6" y="720" width="274.3" height="90" fill="#BF00BF"/>   <!-- 75% Magenta -->
+  <rect x="822.9" y="720" width="274.3" height="90" fill="#000000"/>   <!-- Black -->
+  <rect x="1097.1" y="720" width="274.3" height="90" fill="#00BFBF"/>  <!-- 75% Cyan -->
+  <rect x="1371.4" y="720" width="274.3" height="90" fill="#000000"/>  <!-- Black -->
+  <rect x="1645.7" y="720" width="274.3" height="90" fill="#BFBFBF"/>  <!-- 75% Gray -->
+
+  <!-- Bottom Section (810-1080px, 270px height) -->
+  <!-- Left third: -I, White, +Q -->
+  <rect x="0" y="810" width="137.1" height="270" fill="#00214C"/>      <!-- -I (dark blue) -->
+  <rect x="137.1" y="810" width="137.1" height="270" fill="#FFFFFF"/>  <!-- 100% White -->
+  <rect x="274.3" y="810" width="137.1" height="270" fill="#32006A"/>  <!-- +Q (dark purple) -->
+
+  <!-- Center third: PLUGE on black background -->
+  <rect x="411.4" y="810" width="960" height="270" fill="#000000"/>    <!-- Black background -->
+
+  <!-- PLUGE bars (3 small vertical bars centered in the black area) -->
+  <!-- PLUGE positioned at x=822.9 (center of screen) -->
+  <rect x="822.9" y="810" width="96" height="270" fill="#090909"/>     <!-- 3.5 IRE (super black) -->
+  <rect x="918.9" y="810" width="96" height="270" fill="#131313"/>     <!-- 7.5 IRE (black level) -->
+  <rect x="1014.9" y="810" width="96" height="270" fill="#1D1D1D"/>    <!-- 11.5 IRE (+4% above black) -->
+
+  <!-- Right third: gradient ramp from black to white, then super black -->
+  <rect x="1371.4" y="810" width="68.6" height="270" fill="#000000"/>  <!-- Black -->
+  <rect x="1440" y="810" width="411.4" height="270" fill="url(#whiteRamp)"/> <!-- Gradient ramp -->
+  <rect x="1851.4" y="810" width="68.6" height="270" fill="#000000"/>  <!-- Black -->
+
+  <!-- Labels (subtle) -->
+  <text x="960" y="50" font-family="Arial, sans-serif" font-size="32" fill="#404040" text-anchor="middle" font-weight="bold" opacity="0.7">SMPTE COLOR BARS</text>
+</svg>
