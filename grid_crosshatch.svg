@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Grid and Crosshatch Pattern</title>
+  <desc>Grid pattern for testing geometry, linearity, and distortion</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#404040"/>
+
+  <!-- Outer border -->
+  <rect x="60" y="60" width="1800" height="960" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Vertical lines (every 120 pixels = 15 lines) -->
+  <line x1="180" y1="60" x2="180" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="300" y1="60" x2="300" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="420" y1="60" x2="420" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="540" y1="60" x2="540" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="660" y1="60" x2="660" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="780" y1="60" x2="780" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="900" y1="60" x2="900" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1020" y1="60" x2="1020" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1140" y1="60" x2="1140" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1260" y1="60" x2="1260" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1380" y1="60" x2="1380" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1500" y1="60" x2="1500" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1620" y1="60" x2="1620" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="1740" y1="60" x2="1740" y2="1020" stroke="#FFFFFF" stroke-width="2"/>
+
+  <!-- Horizontal lines (every 120 pixels = 8 lines) -->
+  <line x1="60" y1="180" x2="1860" y2="180" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="60" y1="300" x2="1860" y2="300" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="60" y1="420" x2="1860" y2="420" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="60" y1="540" x2="1860" y2="540" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="60" y1="660" x2="1860" y2="660" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="60" y1="780" x2="1860" y2="780" stroke="#FFFFFF" stroke-width="2"/>
+  <line x1="60" y1="900" x2="1860" y2="900" stroke="#FFFFFF" stroke-width="2"/>
+
+  <!-- Center crosshair (emphasized) -->
+  <line x1="960" y1="60" x2="960" y2="1020" stroke="#FF0000" stroke-width="3"/>
+  <line x1="60" y1="540" x2="1860" y2="540" stroke="#FF0000" stroke-width="3"/>
+
+  <!-- Corner markers -->
+  <circle cx="60" cy="60" r="8" fill="#00FF00"/>
+  <circle cx="1860" cy="60" r="8" fill="#00FF00"/>
+  <circle cx="60" cy="1020" r="8" fill="#00FF00"/>
+  <circle cx="1860" cy="1020" r="8" fill="#00FF00"/>
+
+  <!-- Center marker -->
+  <circle cx="960" cy="540" r="15" fill="none" stroke="#FF0000" stroke-width="2"/>
+  <circle cx="960" cy="540" r="10" fill="none" stroke="#FF0000" stroke-width="2"/>
+  <circle cx="960" cy="540" r="5" fill="#FF0000"/>
+
+  <!-- Diagonal lines for distortion check -->
+  <line x1="60" y1="60" x2="1860" y2="1020" stroke="#00FFFF" stroke-width="1" stroke-dasharray="10,5"/>
+  <line x1="1860" y1="60" x2="60" y2="1020" stroke="#00FFFF" stroke-width="1" stroke-dasharray="10,5"/>
+
+  <!-- Title -->
+  <text x="960" y="45" font-family="Arial, sans-serif" font-size="32" fill="#FFFFFF" text-anchor="middle" font-weight="bold">GRID / CROSSHATCH PATTERN</text>
+  <text x="960" y="1055" font-family="Arial, sans-serif" font-size="18" fill="#CCCCCC" text-anchor="middle">Test for geometry, linearity, and distortion - All lines should be straight and evenly spaced</text>
+</svg>

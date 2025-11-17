@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Smooth Gradients</title>
+  <desc>Smooth RGB and grayscale gradients for gamma and color calibration</desc>
+
+  <defs>
+    <!-- Grayscale gradient -->
+    <linearGradient id="grayGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Red gradient -->
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF0000;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Green gradient -->
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00FF00;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Blue gradient -->
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0000FF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Cyan gradient -->
+    <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Magenta gradient -->
+    <linearGradient id="magentaGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF00FF;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Yellow gradient -->
+    <linearGradient id="yellowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFF00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#202020"/>
+
+  <!-- Grayscale gradient (larger) -->
+  <rect x="60" y="60" width="1800" height="200" fill="url(#grayGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="960" y="45" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">Grayscale</text>
+
+  <!-- RGB gradients -->
+  <rect x="60" y="310" width="1800" height="100" fill="url(#redGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="30" y="365" font-family="Arial, sans-serif" font-size="20" fill="#FF6666" text-anchor="end">R</text>
+
+  <rect x="60" y="420" width="1800" height="100" fill="url(#greenGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="30" y="475" font-family="Arial, sans-serif" font-size="20" fill="#66FF66" text-anchor="end">G</text>
+
+  <rect x="60" y="530" width="1800" height="100" fill="url(#blueGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="30" y="585" font-family="Arial, sans-serif" font-size="20" fill="#6666FF" text-anchor="end">B</text>
+
+  <!-- CMY gradients -->
+  <rect x="60" y="680" width="1800" height="100" fill="url(#cyanGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="30" y="735" font-family="Arial, sans-serif" font-size="20" fill="#66FFFF" text-anchor="end">C</text>
+
+  <rect x="60" y="790" width="1800" height="100" fill="url(#magentaGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="30" y="845" font-family="Arial, sans-serif" font-size="20" fill="#FF66FF" text-anchor="end">M</text>
+
+  <rect x="60" y="900" width="1800" height="100" fill="url(#yellowGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="30" y="955" font-family="Arial, sans-serif" font-size="20" fill="#FFFF66" text-anchor="end">Y</text>
+
+  <text x="960" y="1050" font-family="Arial, sans-serif" font-size="20" fill="#AAAAAA" text-anchor="middle">Smooth gradients for gamma and color response testing</text>
+</svg>

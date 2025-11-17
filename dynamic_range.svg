@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Dynamic Range Test</title>
+  <desc>Dynamic range test pattern with zones from black to white in stop increments</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#808080"/>
+
+  <!-- 11 zones: -5 stops to +5 stops (18% middle gray at center) -->
+  <!-- Each stop is approximately 2x or 0.5x the brightness -->
+
+  <!-- -5 stops (deep black) -->
+  <rect x="60" y="140" width="160" height="800" fill="#010101"/>
+  <text x="140" y="120" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">-5</text>
+
+  <!-- -4 stops -->
+  <rect x="220" y="140" width="160" height="800" fill="#020202"/>
+  <text x="300" y="120" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">-4</text>
+
+  <!-- -3 stops -->
+  <rect x="380" y="140" width="160" height="800" fill="#050505"/>
+  <text x="460" y="120" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">-3</text>
+
+  <!-- -2 stops -->
+  <rect x="540" y="140" width="160" height="800" fill="#0A0A0A"/>
+  <text x="620" y="120" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">-2</text>
+
+  <!-- -1 stop -->
+  <rect x="700" y="140" width="160" height="800" fill="#121212"/>
+  <text x="780" y="120" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">-1</text>
+
+  <!-- Middle gray (18% reflectance / 0.18 linear = ~46% sRGB) -->
+  <rect x="860" y="140" width="200" height="800" fill="#767676"/>
+  <text x="960" y="120" font-family="monospace" font-size="18" fill="#000000" text-anchor="middle" font-weight="bold">0 (18%)</text>
+
+  <!-- +1 stop -->
+  <rect x="1060" y="140" width="160" height="800" fill="#AFAFAF"/>
+  <text x="1140" y="120" font-family="monospace" font-size="18" fill="#000000" text-anchor="middle">+1</text>
+
+  <!-- +2 stops -->
+  <rect x="1220" y="140" width="160" height="800" fill="#CACACA"/>
+  <text x="1300" y="120" font-family="monospace" font-size="18" fill="#000000" text-anchor="middle">+2</text>
+
+  <!-- +3 stops -->
+  <rect x="1380" y="140" width="160" height="800" fill="#DDDDDD"/>
+  <text x="1460" y="120" font-family="monospace" font-size="18" fill="#000000" text-anchor="middle">+3</text>
+
+  <!-- +4 stops -->
+  <rect x="1540" y="140" width="160" height="800" fill="#ECECEC"/>
+  <text x="1620" y="120" font-family="monospace" font-size="18" fill="#000000" text-anchor="middle">+4</text>
+
+  <!-- +5 stops (near white) -->
+  <rect x="1700" y="140" width="160" height="800" fill="#F9F9F9"/>
+  <text x="1780" y="120" font-family="monospace" font-size="18" fill="#000000" text-anchor="middle">+5</text>
+
+  <!-- Title and description -->
+  <text x="960" y="50" font-family="Arial, sans-serif" font-size="36" fill="#000000" text-anchor="middle" font-weight="bold">DYNAMIC RANGE TEST</text>
+  <text x="960" y="990" font-family="Arial, sans-serif" font-size="20" fill="#000000" text-anchor="middle">11 stops: -5 to +5 from middle gray (18% reflectance)</text>
+  <text x="960" y="1020" font-family="Arial, sans-serif" font-size="18" fill="#333333" text-anchor="middle">Use for testing camera/monitor dynamic range and exposure latitude</text>
+</svg>

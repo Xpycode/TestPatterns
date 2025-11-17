@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Circular Grid Pattern</title>
+  <desc>Concentric circles and radial lines for testing lens distortion (barrel/pincushion)</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#303030"/>
+
+  <!-- Concentric circles from center -->
+  <circle cx="960" cy="540" r="50" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="100" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="150" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="200" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="250" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="300" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="350" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="400" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="450" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="960" cy="540" r="500" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+
+  <!-- Radial lines - 24 lines at 15-degree intervals -->
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(0 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(15 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(30 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(45 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(60 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(75 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(90 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(105 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(120 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(135 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(150 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(165 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(180 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(195 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(210 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(225 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(240 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(255 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(270 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(285 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(300 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(315 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(330 960 540)"/>
+  <line x1="960" y1="540" x2="960" y2="40" stroke="#FFFFFF" stroke-width="2" transform="rotate(345 960 540)"/>
+
+  <!-- Horizontal and vertical reference lines (emphasized) -->
+  <line x1="460" y1="540" x2="1460" y2="540" stroke="#FF0000" stroke-width="3"/>
+  <line x1="960" y1="40" x2="960" y2="1040" stroke="#FF0000" stroke-width="3"/>
+
+  <!-- Corner reference squares for checking straight edges -->
+  <rect x="60" y="60" width="100" height="100" fill="none" stroke="#00FF00" stroke-width="3"/>
+  <rect x="1760" y="60" width="100" height="100" fill="none" stroke="#00FF00" stroke-width="3"/>
+  <rect x="60" y="920" width="100" height="100" fill="none" stroke="#00FF00" stroke-width="3"/>
+  <rect x="1760" y="920" width="100" height="100" fill="none" stroke="#00FF00" stroke-width="3"/>
+
+  <!-- Center marker -->
+  <circle cx="960" cy="540" r="20" fill="#FF0000"/>
+  <circle cx="960" cy="540" r="15" fill="#FFFFFF"/>
+  <circle cx="960" cy="540" r="10" fill="#FF0000"/>
+  <circle cx="960" cy="540" r="5" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="960" y="30" font-family="Arial, sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold">CIRCULAR GRID - Lens Distortion Test</text>
+  <text x="960" y="1070" font-family="Arial, sans-serif" font-size="18" fill="#CCCCCC" text-anchor="middle">Circles should be round and concentric. Barrel distortion makes circles oval; pincushion does the opposite</text>
+</svg>

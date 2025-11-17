@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>SMPTE Color Bars (HD)</title>
+  <desc>Standard SMPTE RP 219-2:2002 color bars for HD video calibration</desc>
+
+  <!-- Top Section: 75% Color Bars (0-630px) -->
+  <rect x="0" y="0" width="274.3" height="630" fill="#C0C0C0"/>        <!-- 75% White -->
+  <rect x="274.3" y="0" width="274.3" height="630" fill="#C0C000"/>    <!-- 75% Yellow -->
+  <rect x="548.6" y="0" width="274.3" height="630" fill="#00C0C0"/>    <!-- 75% Cyan -->
+  <rect x="822.9" y="0" width="274.3" height="630" fill="#00C000"/>    <!-- 75% Green -->
+  <rect x="1097.2" y="0" width="274.3" height="630" fill="#C000C0"/>   <!-- 75% Magenta -->
+  <rect x="1371.5" y="0" width="274.3" height="630" fill="#C00000"/>   <!-- 75% Red -->
+  <rect x="1645.7" y="0" width="274.3" height="630" fill="#0000C0"/>   <!-- 75% Blue -->
+
+  <!-- Middle Section: 75% Bars + Black (630-720px) -->
+  <rect x="0" y="630" width="274.3" height="90" fill="#0000C0"/>       <!-- 75% Blue -->
+  <rect x="274.3" y="630" width="274.3" height="90" fill="#000000"/>   <!-- Black -->
+  <rect x="548.6" y="630" width="274.3" height="90" fill="#C000C0"/>   <!-- 75% Magenta -->
+  <rect x="822.9" y="630" width="274.3" height="90" fill="#000000"/>   <!-- Black -->
+  <rect x="1097.2" y="630" width="274.3" height="90" fill="#00C0C0"/>  <!-- 75% Cyan -->
+  <rect x="1371.5" y="630" width="274.3" height="90" fill="#000000"/>  <!-- Black -->
+  <rect x="1645.7" y="630" width="274.3" height="90" fill="#C0C0C0"/>  <!-- 75% White -->
+
+  <!-- Bottom Section: PLUGE and 100% Bars (720-1080px) -->
+  <!-- Left section: -I, 100% White, +Q -->
+  <rect x="0" y="720" width="160" height="360" fill="#00214C"/>        <!-- -I (Minus I) -->
+  <rect x="160" y="720" width="160" height="360" fill="#FFFFFF"/>      <!-- 100% White -->
+  <rect x="320" y="720" width="160" height="360" fill="#32006A"/>      <!-- +Q (Plus Q) -->
+
+  <!-- Middle section: PLUGE (Picture Line-Up Generation Equipment) -->
+  <rect x="480" y="720" width="320" height="360" fill="#000000"/>      <!-- Black (7.5 IRE) -->
+  <rect x="800" y="720" width="320" height="360" fill="#000000"/>      <!-- Black (0 IRE) -->
+  <rect x="1120" y="720" width="320" height="360" fill="#0A0A0A"/>     <!-- Super Black (-2 IRE) -->
+
+  <!-- Right section: 100% Saturated Bars -->
+  <rect x="1440" y="720" width="80" height="360" fill="#000000"/>      <!-- Black -->
+  <rect x="1520" y="720" width="80" height="360" fill="#FFFFFF"/>      <!-- 100% White -->
+  <rect x="1600" y="720" width="80" height="360" fill="#0000FF"/>      <!-- 100% Blue -->
+  <rect x="1680" y="720" width="80" height="360" fill="#000000"/>      <!-- Black -->
+  <rect x="1760" y="720" width="80" height="360" fill="#FF00FF"/>      <!-- 100% Magenta -->
+  <rect x="1840" y="720" width="80" height="360" fill="#FF0000"/>      <!-- 100% Red -->
+
+  <!-- Labels -->
+  <text x="960" y="50" font-family="Arial, sans-serif" font-size="36" fill="#000000" text-anchor="middle" font-weight="bold">SMPTE HD COLOR BARS</text>
+  <text x="960" y="1050" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">75% Amplitude - 100% Saturation</text>
+</svg>

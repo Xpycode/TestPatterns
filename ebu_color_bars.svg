@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>EBU Color Bars</title>
+  <desc>EBU standard color bars for PAL/European broadcast calibration</desc>
+
+  <!-- Full height 100% saturated color bars -->
+  <rect x="0" y="0" width="240" height="1080" fill="#FFFFFF"/>      <!-- White -->
+  <rect x="240" y="0" width="240" height="1080" fill="#FFFF00"/>    <!-- Yellow -->
+  <rect x="480" y="0" width="240" height="1080" fill="#00FFFF"/>    <!-- Cyan -->
+  <rect x="720" y="0" width="240" height="1080" fill="#00FF00"/>    <!-- Green -->
+  <rect x="960" y="0" width="240" height="1080" fill="#FF00FF"/>    <!-- Magenta -->
+  <rect x="1200" y="0" width="240" height="1080" fill="#FF0000"/>   <!-- Red -->
+  <rect x="1440" y="0" width="240" height="1080" fill="#0000FF"/>   <!-- Blue -->
+  <rect x="1680" y="0" width="240" height="1080" fill="#000000"/>   <!-- Black -->
+
+  <!-- Labels -->
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="48" fill="#808080" text-anchor="middle" font-weight="bold" opacity="0.5">EBU COLOUR BARS</text>
+</svg>

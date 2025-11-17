@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Zone Plate Pattern</title>
+  <desc>Circular zone plate for testing resolution limits and aliasing artifacts</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#808080"/>
+
+  <!-- White background for pattern -->
+  <rect x="60" y="60" width="1800" height="960" fill="#FFFFFF"/>
+
+  <!-- Zone plate - concentric circles with decreasing spacing -->
+  <g id="zonePlate">
+    <circle cx="960" cy="540" r="400" fill="none" stroke="#000000" stroke-width="2"/>
+    <circle cx="960" cy="540" r="390" fill="none" stroke="#000000" stroke-width="2"/>
+    <circle cx="960" cy="540" r="380" fill="none" stroke="#000000" stroke-width="2"/>
+    <circle cx="960" cy="540" r="370" fill="none" stroke="#000000" stroke-width="2"/>
+    <circle cx="960" cy="540" r="360" fill="none" stroke="#000000" stroke-width="2"/>
+
+    <circle cx="960" cy="540" r="350" fill="none" stroke="#000000" stroke-width="1.5"/>
+    <circle cx="960" cy="540" r="342" fill="none" stroke="#000000" stroke-width="1.5"/>
+    <circle cx="960" cy="540" r="334" fill="none" stroke="#000000" stroke-width="1.5"/>
+    <circle cx="960" cy="540" r="326" fill="none" stroke="#000000" stroke-width="1.5"/>
+    <circle cx="960" cy="540" r="318" fill="none" stroke="#000000" stroke-width="1.5"/>
+    <circle cx="960" cy="540" r="310" fill="none" stroke="#000000" stroke-width="1.5"/>
+
+    <circle cx="960" cy="540" r="302" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="296" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="290" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="284" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="278" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="272" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="266" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="260" fill="none" stroke="#000000" stroke-width="1"/>
+
+    <circle cx="960" cy="540" r="254" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="249" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="244" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="239" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="234" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="229" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="224" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="219" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="214" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="209" fill="none" stroke="#000000" stroke-width="1"/>
+
+    <circle cx="960" cy="540" r="204" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="200" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="196" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="192" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="188" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="184" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="180" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="176" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="172" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="168" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="164" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="160" fill="none" stroke="#000000" stroke-width="1"/>
+
+    <circle cx="960" cy="540" r="156" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="153" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="150" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="147" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="144" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="141" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="138" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="135" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="132" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="129" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="126" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="123" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="120" fill="none" stroke="#000000" stroke-width="1"/>
+
+    <circle cx="960" cy="540" r="117" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="115" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="113" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="111" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="109" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="107" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="105" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="103" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="101" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="99" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="97" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="95" fill="none" stroke="#000000" stroke-width="1"/>
+
+    <circle cx="960" cy="540" r="93" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="91.5" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="90" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="88.5" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="87" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="85.5" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="84" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="82.5" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="81" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="79.5" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="78" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="76.5" fill="none" stroke="#000000" stroke-width="1"/>
+    <circle cx="960" cy="540" r="75" fill="none" stroke="#000000" stroke-width="1"/>
+
+    <!-- Center dot -->
+    <circle cx="960" cy="540" r="10" fill="#000000"/>
+  </g>
+
+  <!-- Border -->
+  <rect x="60" y="60" width="1800" height="960" fill="none" stroke="#000000" stroke-width="4"/>
+
+  <!-- Title -->
+  <text x="960" y="45" font-family="Arial, sans-serif" font-size="32" fill="#000000" text-anchor="middle" font-weight="bold">ZONE PLATE - Resolution &amp; Aliasing Test</text>
+  <text x="960" y="1050" font-family="Arial, sans-serif" font-size="18" fill="#333333" text-anchor="middle">Concentric rings test resolution limits and reveal aliasing/moiré artifacts</text>
+</svg>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>Checkerboard Pattern</title>
+  <desc>High-contrast checkerboard for convergence, focus, and aliasing testing</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#808080"/>
+
+  <!-- 16x9 checkerboard (120x120 pixel squares) -->
+  <g id="checkerboard">
+    <!-- Row 1 -->
+    <rect x="0" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="120" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="240" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="360" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="480" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="600" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="720" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="840" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="960" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="1080" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1200" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="1320" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1440" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="1560" y="0" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1680" y="0" width="120" height="120" fill="#000000"/>
+    <rect x="1800" y="0" width="120" height="120" fill="#FFFFFF"/>
+
+    <!-- Row 2 -->
+    <rect x="0" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="120" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="240" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="360" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="480" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="600" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="720" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="840" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="960" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1080" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="1200" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1320" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="1440" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1560" y="120" width="120" height="120" fill="#000000"/>
+    <rect x="1680" y="120" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1800" y="120" width="120" height="120" fill="#000000"/>
+
+    <!-- Row 3 -->
+    <rect x="0" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="120" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="240" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="360" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="480" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="600" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="720" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="840" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="960" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="1080" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1200" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="1320" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1440" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="1560" y="240" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1680" y="240" width="120" height="120" fill="#000000"/>
+    <rect x="1800" y="240" width="120" height="120" fill="#FFFFFF"/>
+
+    <!-- Row 4 -->
+    <rect x="0" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="120" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="240" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="360" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="480" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="600" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="720" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="840" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="960" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1080" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="1200" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1320" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="1440" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1560" y="360" width="120" height="120" fill="#000000"/>
+    <rect x="1680" y="360" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1800" y="360" width="120" height="120" fill="#000000"/>
+
+    <!-- Row 5 -->
+    <rect x="0" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="120" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="240" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="360" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="480" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="600" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="720" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="840" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="960" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="1080" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1200" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="1320" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1440" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="1560" y="480" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1680" y="480" width="120" height="120" fill="#000000"/>
+    <rect x="1800" y="480" width="120" height="120" fill="#FFFFFF"/>
+
+    <!-- Row 6 -->
+    <rect x="0" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="120" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="240" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="360" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="480" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="600" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="720" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="840" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="960" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1080" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="1200" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1320" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="1440" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1560" y="600" width="120" height="120" fill="#000000"/>
+    <rect x="1680" y="600" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1800" y="600" width="120" height="120" fill="#000000"/>
+
+    <!-- Row 7 -->
+    <rect x="0" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="120" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="240" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="360" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="480" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="600" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="720" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="840" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="960" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="1080" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1200" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="1320" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1440" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="1560" y="720" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1680" y="720" width="120" height="120" fill="#000000"/>
+    <rect x="1800" y="720" width="120" height="120" fill="#FFFFFF"/>
+
+    <!-- Row 8 -->
+    <rect x="0" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="120" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="240" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="360" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="480" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="600" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="720" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="840" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="960" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1080" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="1200" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1320" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="1440" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1560" y="840" width="120" height="120" fill="#000000"/>
+    <rect x="1680" y="840" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1800" y="840" width="120" height="120" fill="#000000"/>
+
+    <!-- Row 9 -->
+    <rect x="0" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="120" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="240" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="360" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="480" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="600" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="720" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="840" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="960" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="1080" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1200" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="1320" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1440" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="1560" y="960" width="120" height="120" fill="#FFFFFF"/>
+    <rect x="1680" y="960" width="120" height="120" fill="#000000"/>
+    <rect x="1800" y="960" width="120" height="120" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Title overlay -->
+  <rect x="660" y="10" width="600" height="60" fill="#808080" opacity="0.9"/>
+  <text x="960" y="50" font-family="Arial, sans-serif" font-size="32" fill="#FFFFFF" text-anchor="middle" font-weight="bold">CHECKERBOARD</text>
+</svg>

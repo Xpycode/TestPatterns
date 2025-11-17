@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>White Balance and Gray Card</title>
+  <desc>18% gray card and white/black reference for camera white balance calibration</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#404040"/>
+
+  <!-- Main 18% gray card (center, large) -->
+  <rect x="560" y="240" width="800" height="600" fill="#767676"/>
+  <rect x="560" y="240" width="800" height="600" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Label for 18% gray -->
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="64" fill="#000000" text-anchor="middle" font-weight="bold">18% GRAY</text>
+  <text x="960" y="600" font-family="Arial, sans-serif" font-size="32" fill="#000000" text-anchor="middle">Middle Gray Reference</text>
+
+  <!-- White reference (top right) -->
+  <rect x="1420" y="60" width="440" height="280" fill="#FFFFFF"/>
+  <rect x="1420" y="60" width="440" height="280" fill="none" stroke="#000000" stroke-width="3"/>
+  <text x="1640" y="210" font-family="Arial, sans-serif" font-size="36" fill="#000000" text-anchor="middle" font-weight="bold">WHITE</text>
+  <text x="1640" y="250" font-family="Arial, sans-serif" font-size="20" fill="#000000" text-anchor="middle">Reference</text>
+
+  <!-- Black reference (bottom right) -->
+  <rect x="1420" y="380" width="440" height="280" fill="#000000"/>
+  <rect x="1420" y="380" width="440" height="280" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1640" y="530" font-family="Arial, sans-serif" font-size="36" fill="#FFFFFF" text-anchor="middle" font-weight="bold">BLACK</text>
+  <text x="1640" y="570" font-family="Arial, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle">Reference</text>
+
+  <!-- Additional gray references (left side) -->
+  <rect x="60" y="60" width="440" height="140" fill="#FFFFFF"/>
+  <text x="280" y="140" font-family="Arial, sans-serif" font-size="24" fill="#000000" text-anchor="middle">100% White</text>
+
+  <rect x="60" y="220" width="440" height="140" fill="#BEBEBE"/>
+  <text x="280" y="300" font-family="Arial, sans-serif" font-size="24" fill="#000000" text-anchor="middle">75% Gray</text>
+
+  <rect x="60" y="380" width="440" height="140" fill="#767676"/>
+  <text x="280" y="460" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">50% Gray (18%)</text>
+
+  <rect x="60" y="540" width="440" height="140" fill="#404040"/>
+  <text x="280" y="620" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">25% Gray</text>
+
+  <rect x="60" y="700" width="440" height="140" fill="#000000"/>
+  <text x="280" y="780" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF" text-anchor="middle">0% Black</text>
+
+  <!-- Title -->
+  <text x="960" y="50" font-family="Arial, sans-serif" font-size="42" fill="#FFFFFF" text-anchor="middle" font-weight="bold">WHITE BALANCE REFERENCE</text>
+
+  <!-- Instructions -->
+  <text x="960" y="900" font-family="Arial, sans-serif" font-size="22" fill="#CCCCCC" text-anchor="middle">For camera white balance: Fill frame with 18% gray area and set custom white balance</text>
+  <text x="960" y="930" font-family="Arial, sans-serif" font-size="18" fill="#AAAAAA" text-anchor="middle">Ensure even, neutral lighting across the gray card surface</text>
+</svg>

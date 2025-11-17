@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <title>PLUGE Pattern</title>
+  <desc>Picture Line-Up Generation Equipment - for black level and brightness calibration</desc>
+
+  <!-- Background - reference black -->
+  <rect x="0" y="0" width="1920" height="1080" fill="#101010"/>
+
+  <!-- Main PLUGE bars in center -->
+  <!-- Below black (-4% / -10 IRE) - should be invisible when properly calibrated -->
+  <rect x="560" y="340" width="200" height="400" fill="#000000"/>
+  <text x="660" y="770" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">Below Black</text>
+  <text x="660" y="795" font-family="monospace" font-size="14" fill="#AAAAAA" text-anchor="middle">-4% / -10 IRE</text>
+
+  <!-- Reference black (0% / 0 IRE) -->
+  <rect x="810" y="340" width="300" height="400" fill="#101010"/>
+  <text x="960" y="770" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">Reference Black</text>
+  <text x="960" y="795" font-family="monospace" font-size="14" fill="#AAAAAA" text-anchor="middle">0% / 0 IRE</text>
+
+  <!-- Above black (+4% / +10 IRE) - should be barely visible when properly calibrated -->
+  <rect x="1160" y="340" width="200" height="400" fill="#1A1A1A"/>
+  <text x="1260" y="770" font-family="monospace" font-size="18" fill="#FFFFFF" text-anchor="middle">Above Black</text>
+  <text x="1260" y="795" font-family="monospace" font-size="14" fill="#AAAAAA" text-anchor="middle">+4% / +10 IRE</text>
+
+  <!-- Border around PLUGE bars -->
+  <rect x="560" y="340" width="800" height="400" fill="none" stroke="#808080" stroke-width="2"/>
+
+  <!-- White reference patches (top) -->
+  <rect x="760" y="120" width="180" height="100" fill="#FFFFFF"/>
+  <text x="850" y="240" font-family="monospace" font-size="14" fill="#FFFFFF" text-anchor="middle">100% White</text>
+
+  <rect x="980" y="120" width="180" height="100" fill="#EBEBEB"/>
+  <text x="1070" y="240" font-family="monospace" font-size="14" fill="#FFFFFF" text-anchor="middle">75% White</text>
+
+  <!-- Gray reference patches (bottom) -->
+  <rect x="660" y="860" width="150" height="100" fill="#808080"/>
+  <text x="735" y="980" font-family="monospace" font-size="14" fill="#FFFFFF" text-anchor="middle">50% Gray</text>
+
+  <rect x="845" y="860" width="150" height="100" fill="#404040"/>
+  <text x="920" y="980" font-family="monospace" font-size="14" fill="#FFFFFF" text-anchor="middle">25% Gray</text>
+
+  <rect x="1030" y="860" width="150" height="100" fill="#202020"/>
+  <text x="1105" y="980" font-family="monospace" font-size="14" fill="#FFFFFF" text-anchor="middle">12.5% Gray</text>
+
+  <rect x="1215" y="860" width="150" height="100" fill="#101010"/>
+  <text x="1290" y="980" font-family="monospace" font-size="14" fill="#FFFFFF" text-anchor="middle">Ref. Black</text>
+
+  <!-- Title and instructions -->
+  <text x="960" y="50" font-family="Arial, sans-serif" font-size="42" fill="#FFFFFF" text-anchor="middle" font-weight="bold">PLUGE - Black Level Calibration</text>
+  <text x="960" y="90" font-family="Arial, sans-serif" font-size="18" fill="#AAAAAA" text-anchor="middle">Picture Line-Up Generation Equipment</text>
+
+  <!-- Calibration instructions -->
+  <rect x="100" y="300" width="400" height="480" fill="#202020" opacity="0.8"/>
+  <text x="300" y="340" font-family="Arial, sans-serif" font-size="22" fill="#FFFFFF" text-anchor="middle" font-weight="bold">CALIBRATION:</text>
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">1. Adjust brightness until</text>
+  <text x="300" y="405" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">   the "Below Black" bar is</text>
+  <text x="300" y="430" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">   completely invisible</text>
+
+  <text x="300" y="470" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">2. The "Reference Black"</text>
+  <text x="300" y="495" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">   should be just visible</text>
+
+  <text x="300" y="535" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">3. The "Above Black" bar</text>
+  <text x="300" y="560" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">   should be barely visible,</text>
+  <text x="300" y="585" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">   distinct from ref. black</text>
+
+  <text x="300" y="625" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">4. Adjust contrast using</text>
+  <text x="300" y="650" font-family="Arial, sans-serif" font-size="16" fill="#DDDDDD" text-anchor="middle">   white reference patches</text>
+
+  <text x="300" y="690" font-family="Arial, sans-serif" font-size="14" fill="#AAAAAA" text-anchor="middle">View in a dark room for</text>
+  <text x="300" y="710" font-family="Arial, sans-serif" font-size="14" fill="#AAAAAA" text-anchor="middle">best calibration results</text>
+
+  <!-- Legend -->
+  <rect x="1420" y="300" width="400" height="380" fill="#202020" opacity="0.8"/>
+  <text x="1620" y="340" font-family="Arial, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="bold">REFERENCE VALUES</text>
+
+  <text x="1620" y="385" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">Below Black: 0.0% (RGB 0,0,0)</text>
+  <text x="1620" y="410" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">Ref. Black: 6.3% (RGB 16,16,16)</text>
+  <text x="1620" y="435" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">Above Black: 10.2% (RGB 26,26,26)</text>
+
+  <text x="1620" y="480" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">12.5% Gray: RGB 32,32,32</text>
+  <text x="1620" y="505" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">25% Gray: RGB 64,64,64</text>
+  <text x="1620" y="530" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">50% Gray: RGB 128,128,128</text>
+
+  <text x="1620" y="575" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">75% White: RGB 235,235,235</text>
+  <text x="1620" y="600" font-family="monospace" font-size="14" fill="#DDDDDD" text-anchor="middle">100% White: RGB 255,255,255</text>
+
+  <text x="1620" y="645" font-family="Arial, sans-serif" font-size="12" fill="#AAAAAA" text-anchor="middle">IRE scale: 0 IRE = Black</text>
+  <text x="1620" y="665" font-family="Arial, sans-serif" font-size="12" fill="#AAAAAA" text-anchor="middle">100 IRE = White</text>
+</svg>
