@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel,
     QPushButton, QSlider, QFrame
 )
-from PySide6.QtCore import Qt, QUrl
+from PySide6.QtCore import Qt, QUrl, Signal
 from PySide6.QtGui import QFont, QPixmap
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtMultimediaWidgets import QVideoWidget
@@ -13,6 +13,9 @@ from PySide6.QtMultimediaWidgets import QVideoWidget
 
 class PlayerPanel(QWidget):
     """Player panel for displaying images and videos"""
+
+    # Signal emitted when fullscreen toggle is requested
+    fullscreen_requested = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -192,6 +195,7 @@ class PlayerPanel(QWidget):
         self.play_button.clicked.connect(self._on_play_pause_clicked)
         self.seek_slider.sliderMoved.connect(self._on_seek_slider_moved)
         self.loop_button.clicked.connect(self._on_loop_clicked)
+        self.fullscreen_button.clicked.connect(self._on_fullscreen_clicked)
 
         # Set default volume
         self.audio_output.setVolume(self.volume_slider.value() / 100.0)
@@ -245,6 +249,9 @@ class PlayerPanel(QWidget):
 
             # Scale and display
             self._update_scaled_image()
+
+            # Enable fullscreen button
+            self.fullscreen_button.setEnabled(True)
 
             print(f"Displaying image: {image_path} ({pixmap.width()}x{pixmap.height()})")
 
@@ -325,6 +332,7 @@ class PlayerPanel(QWidget):
             self.play_button.setEnabled(True)
             self.seek_slider.setEnabled(True)
             self.loop_button.setEnabled(True)
+            self.fullscreen_button.setEnabled(True)
 
             # Mark as playing video
             self.is_playing_video = True
@@ -350,6 +358,7 @@ class PlayerPanel(QWidget):
             self.play_button.setEnabled(False)
             self.seek_slider.setEnabled(False)
             self.loop_button.setEnabled(False)
+            self.fullscreen_button.setEnabled(False)
             self.seek_slider.setValue(0)
             self.time_label.setText("00:00 / 00:00")
 
@@ -463,3 +472,20 @@ class PlayerPanel(QWidget):
             True if loop is enabled, False otherwise
         """
         return self.loop_enabled
+
+    def _on_fullscreen_clicked(self):
+        """Handle fullscreen button click"""
+        # Emit signal to main window to toggle fullscreen
+        self.fullscreen_requested.emit()
+
+    def update_fullscreen_button(self, is_fullscreen):
+        """
+        Update fullscreen button text based on state
+
+        Args:
+            is_fullscreen: True if in fullscreen mode, False otherwise
+        """
+        if is_fullscreen:
+            self.fullscreen_button.setText("⛶ Exit Fullscreen")
+        else:
+            self.fullscreen_button.setText("⛶ Fullscreen")

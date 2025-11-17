@@ -223,8 +223,17 @@ test-pattern-app/
 - Loop preference loaded on application startup
 - Loop state saved when application closes
 
+**Phase 8: Fullscreen Mode** ✓ Complete
+- Fullscreen toggle button in control panel
+- Fullscreen mode hides library panel, control panel, and menu bar
+- Window expands to full screen when entering fullscreen mode
+- Keyboard shortcut: F or F11 to toggle fullscreen
+- Keyboard shortcut: ESC to exit fullscreen
+- Fullscreen button text updates based on state
+- Signal-based communication between player panel and main window
+- Fullscreen works for both images and videos
+
 ### Upcoming Phases
-- **Phase 8**: Fullscreen mode
 - **Phase 9**: Library enhancements
 - **Phase 10**: Polish and build scripts
 

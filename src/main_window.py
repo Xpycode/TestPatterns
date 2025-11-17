@@ -28,6 +28,9 @@ class MainWindow(QMainWindow):
         # Generate built-in patterns if needed
         init_builtin_patterns(self.pattern_manager)
 
+        # Fullscreen state
+        self.is_fullscreen = False
+
         # Initialize UI
         self._init_ui()
         self._create_menu_bar()
@@ -55,6 +58,9 @@ class MainWindow(QMainWindow):
 
         # Connect library selection to player panel (ready for Phase 4)
         self.library_panel.pattern_selected.connect(self._on_pattern_selected)
+
+        # Connect fullscreen toggle from player panel
+        self.player_panel.fullscreen_requested.connect(self._toggle_fullscreen)
 
         # Set initial splitter sizes (30% / 70%)
         self.splitter.setSizes([300, 700])
@@ -107,8 +113,17 @@ class MainWindow(QMainWindow):
         loop_shortcut = QShortcut(QKeySequence(Qt.Key.Key_L), self)
         loop_shortcut.activated.connect(self._on_loop_shortcut)
 
-        # F or F11: Fullscreen (will be implemented in Phase 8)
-        # ESC: Exit fullscreen (will be implemented in Phase 8)
+        # F: Fullscreen toggle
+        fullscreen_shortcut_f = QShortcut(QKeySequence(Qt.Key.Key_F), self)
+        fullscreen_shortcut_f.activated.connect(self._on_fullscreen_shortcut)
+
+        # F11: Fullscreen toggle
+        fullscreen_shortcut_f11 = QShortcut(QKeySequence(Qt.Key.Key_F11), self)
+        fullscreen_shortcut_f11.activated.connect(self._on_fullscreen_shortcut)
+
+        # ESC: Exit fullscreen
+        esc_shortcut = QShortcut(QKeySequence(Qt.Key.Key_Escape), self)
+        esc_shortcut.activated.connect(self._on_escape_shortcut)
 
     def _on_play_pause_shortcut(self):
         """Handle Space key for play/pause"""
@@ -142,3 +157,55 @@ class MainWindow(QMainWindow):
         # Save loop preference before closing
         self._save_loop_preference()
         super().closeEvent(event)
+
+    def _on_fullscreen_shortcut(self):
+        """Handle F or F11 key for fullscreen toggle"""
+        self._toggle_fullscreen()
+
+    def _on_escape_shortcut(self):
+        """Handle ESC key to exit fullscreen"""
+        if self.is_fullscreen:
+            self._toggle_fullscreen()
+
+    def _toggle_fullscreen(self):
+        """Toggle fullscreen mode"""
+        if self.is_fullscreen:
+            # Exit fullscreen
+            self.showNormal()
+
+            # Show library panel
+            self.library_panel.show()
+
+            # Show control panel
+            self.player_panel.control_panel.show()
+
+            # Show menu bar
+            self.menuBar().show()
+
+            # Update state
+            self.is_fullscreen = False
+
+            # Update fullscreen button
+            self.player_panel.update_fullscreen_button(False)
+
+            print("Exited fullscreen mode")
+        else:
+            # Enter fullscreen
+            self.showFullScreen()
+
+            # Hide library panel
+            self.library_panel.hide()
+
+            # Hide control panel
+            self.player_panel.control_panel.hide()
+
+            # Hide menu bar
+            self.menuBar().hide()
+
+            # Update state
+            self.is_fullscreen = True
+
+            # Update fullscreen button
+            self.player_panel.update_fullscreen_button(True)
+
+            print("Entered fullscreen mode")
